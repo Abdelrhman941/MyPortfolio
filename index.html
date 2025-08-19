@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="icon" type="image/png" href="https://i.postimg.cc/BQrWmm8n/1.png">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- ------------------------------------------------------------------------------------------------------------ -->
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        body {
+            background-color: #0f1115;
+            color: #f2f2f2;
+        }
+        
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+        
+        .floating-element {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .floating-element:nth-child(2n) {
+            animation-delay: -2s;
+        }
+        
+        .floating-element:nth-child(3n) {
+            animation-delay: -4s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #00cfa7;
+            border-radius: 50%;
+            animation: particle 8s linear infinite;
+        }
+        
+        @keyframes particle {
+            0% { transform: translateY(100vh) translateX(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100px) translateX(50px); opacity: 0; }
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #00cfa7 0%, #3ab0ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .section-card {
+            background-color: #131519;
+            border-radius: 12px;
+            border: 1px solid #1f2937;
+        }
+        
+        .service-card {
+            background-color: #131519;
+            border: 1px solid #1f2937;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        /* Individual service card hover effects matching icon colors */
+        .service-card.teal:hover {
+            border-color: #00cfa7;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 207, 167, 0.1);
+        }
+        
+        .service-card.blue:hover {
+            border-color: #60a5fa;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(96, 165, 250, 0.1);
+        }
+        
+        .service-card.purple:hover {
+            border-color: #a78bfa;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(167, 139, 250, 0.1);
+        }
+        
+        .service-card.green:hover {
+            border-color: #4ade80;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(74, 222, 128, 0.1);
+        }
+        
+        .service-card.yellow:hover {
+            border-color: #facc15;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(250, 204, 21, 0.1);
+        }
+        
+        .service-card.red:hover {
+            border-color: #f87171;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(248, 113, 113, 0.1);
+        }
+        
+        .skill-badge {
+            background: linear-gradient(135deg, #131519 0%, #1f2937 100%);
+            border: 1px solid #374151;
+            transition: all 0.3s ease;
+        }
+        
+        .skill-badge:hover {
+            border-color: #00cfa7;
+            background: linear-gradient(135deg, #00cfa7 0%, #3ab0ff 100%);
+            color: #0f1115;
+        }
+        
+        .project-card {
+            background-color: #131519;
+            border: 1px solid #1f2937;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .project-card:hover {
+            border-color: #3ab0ff;
+            transform: translateY(-5px);
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: #00cfa7;
+        }
+        
+        .nav-link.active {
+            color: #00cfa7;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #00cfa7 0%, #3ab0ff 100%);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link.active::after,
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            background-color: #131519;
+            border: 1px solid #374151;
+            color: #f2f2f2;
+        }
+        
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: #00cfa7;
+            box-shadow: 0 0 0 3px rgba(0, 207, 167, 0.1);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #00cfa7 0%, #3ab0ff 100%);
+            color: #0f1115;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 207, 167, 0.4);
+        }
+        
+        .section-spacing {
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+        }
+        
+        /* Consistent section heading styling */
+        .section-heading {
+            font-size: 2.25rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        @media (min-width: 768px) {
+            .section-heading {
+                font-size: 2.5rem;
+            }
+        }
+        
+        /* Data Science Word Cloud Animation */
+        .word-cloud-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+        
+        .word-ticker {
+            position: absolute;
+            white-space: nowrap;
+            font-weight: 600;
+            opacity: 0.08;
+            animation: ticker 25s linear infinite;
+        }
+        
+        .word-ticker.row-1 {
+            top: 15%;
+            font-size: 2rem;
+            color: #00cfa7;
+            animation-delay: 0s;
+        }
+        
+        .word-ticker.row-2 {
+            top: 35%;
+            font-size: 1.8rem;
+            color: #3ab0ff;
+            animation-delay: -8s;
+        }
+        
+        .word-ticker.row-3 {
+            top: 55%;
+            font-size: 2.2rem;
+            color: #a78bfa;
+            animation-delay: -16s;
+        }
+        
+        .word-ticker.row-4 {
+            top: 75%;
+            font-size: 1.9rem;
+            color: #4ade80;
+            animation-delay: -24s;
+        }
+        
+        @keyframes ticker {
+            0% { transform: translate3d(100vw, 0, 0); }
+            100% { transform: translate3d(-100vw, 0, 0); }
+        }
+        
+        @media (max-width: 768px) {
+            .section-spacing {
+                padding-top: 2rem;
+                padding-bottom: 2rem;
+            }
+            
+            .word-ticker.row-1 { font-size: 1.5rem; }
+            .word-ticker.row-2 { font-size: 1.3rem; }
+            .word-ticker.row-3 { font-size: 1.6rem; }
+            .word-ticker.row-4 { font-size: 1.4rem; }
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        .mobile-menu {
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            .desktop-menu { display: none; }
+            .mobile-menu { display: block; }
+        }
+        
+        .work-experience-card {
+            background-color: #131519;
+            border: 1px solid #1f2937;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            margin-bottom: 1.5rem;
+        }
+        
+        .work-experience-card:hover {
+            border-color: #00cfa7;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 207, 167, 0.1);
+        }
+    </style>
+    <!-- ------------------------------------------------------------------------------------------------------------ -->
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-opacity-90 backdrop-blur-md" style="background-color: rgba(15, 17, 21, 0.9);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="text-xl font-bold gradient-text">Data Science Portfolio</div>
+                
+                <!-- Desktop Menu -->
+                <div class="desktop-menu flex space-x-8">
+                    <a href="#cover" class="nav-link text-gray-300 hover:text-white">Cover</a>
+                    <a href="#about" class="nav-link text-gray-300 hover:text-white">About</a>
+                    <a href="#services" class="nav-link text-gray-300 hover:text-white">Services</a>
+                    <a href="#skills" class="nav-link text-gray-300 hover:text-white">Skills</a>
+                    <a href="#experience" class="nav-link text-gray-300 hover:text-white">Experience</a>
+                    <a href="#projects" class="nav-link text-gray-300 hover:text-white">Projects</a>
+                    <a href="#contact" class="nav-link text-gray-300 hover:text-white">Contact</a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu md:hidden text-white focus:outline-none" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-nav" class="mobile-menu hidden pb-4">
+                <div class="flex flex-col space-y-3">
+                    <a href="#cover" class="nav-link text-gray-300 hover:text-white">Cover</a>
+                    <a href="#about" class="nav-link text-gray-300 hover:text-white">About</a>
+                    <a href="#services" class="nav-link text-gray-300 hover:text-white">Services</a>
+                    <a href="#skills" class="nav-link text-gray-300 hover:text-white">Skills</a>
+                    <a href="#experience" class="nav-link text-gray-300 hover:text-white">Experience</a>
+                    <a href="#projects" class="nav-link text-gray-300 hover:text-white">Projects</a>
+                    <a href="#contact" class="nav-link text-gray-300 hover:text-white">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero/Cover Section -->
+    <section id="cover" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <!-- Data Science Word Cloud Animation -->
+        <div class="word-cloud-container">
+            <div class="word-ticker row-1">
+                Machine Learning • Deep Learning • Neural Networks • Artificial Intelligence • Data Mining • Predictive Analytics • Statistical Modeling • Algorithm Design • Feature Engineering • Model Optimization •
+            </div>
+            <div class="word-ticker row-2">
+                Natural Language Processing • Computer Vision • Big Data • Data Visualization • Python • TensorFlow • PyTorch • Scikit-learn • Pandas • NumPy • Jupyter • Apache Spark •
+            </div>
+            <div class="word-ticker row-3">
+                Classification • Regression • Clustering • Dimensionality Reduction • Time Series Analysis • Reinforcement Learning • Ensemble Methods • Cross Validation • Hyperparameter Tuning •
+            </div>
+            <div class="word-ticker row-4">
+                Data Engineering • ETL Pipelines • SQL • NoSQL • Cloud Computing • AWS • Docker • Git • API Development • Web Scraping • Data Warehousing • Business Intelligence •
+            </div>
+        </div>
+        
+        <!-- Animated Particles -->
+        <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+        <div class="particle" style="left: 20%; animation-delay: 1s;"></div>
+        <div class="particle" style="left: 30%; animation-delay: 2s;"></div>
+        <div class="particle" style="left: 40%; animation-delay: 3s;"></div>
+        <div class="particle" style="left: 50%; animation-delay: 4s;"></div>
+        <div class="particle" style="left: 60%; animation-delay: 5s;"></div>
+        <div class="particle" style="left: 70%; animation-delay: 6s;"></div>
+        <div class="particle" style="left: 80%; animation-delay: 7s;"></div>
+        <div class="particle" style="left: 90%; animation-delay: 8s;"></div>
+        
+        <!-- Main Content -->
+        <div class="relative z-10 text-center max-w-4xl mx-auto px-4">
+            <h1 class="text-5xl md:text-7xl font-bold gradient-text mb-6 leading-tight">Abdelrhman Ezzat</h1>
+            <h2 class="text-3xl md:text-4xl font-semibold gradient-text mb-8">Data Scientist & AI Engineer</h2>
+            <p class="text-lg md:text-xl text-gray-300 leading-relaxed">
+                Transforming raw data into intelligent solutions through Machine Learning, Deep Learning, 
+                NLP, and Computer Vision. I build AI systems that solve real-world problems.
+            </p>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="section-spacing">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="section-heading gradient-text">About Me</h2>
+            <div class="section-card p-8 md:p-12">
+                <div class="space-y-8">
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-4 text-teal-400">
+                            <i class="fas fa-user mr-3"></i>Who I Am
+                        </h3>
+                        <p class="text-gray-300 leading-relaxed text-lg">
+                            I'm Abdelrhman Ezzat, a passionate Data Scientist and AI Engineer currently pursuing my Bachelor's degree in Artificial Intelligence and Data Science at Menoufia University, Egypt. My academic journey has equipped me with both theoretical foundations and practical expertise in cutting-edge AI technologies.
+                        </p>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-4 text-blue-400">
+                            <i class="fas fa-brain mr-3"></i>My Expertise
+                        </h3>
+                        <p class="text-gray-300 leading-relaxed text-lg mb-4">
+                            My technical expertise spans across multiple domains of artificial intelligence:
+                        </p>
+                        <ul class="space-y-3 text-gray-300 ml-6">
+                            <li class="flex items-start">
+                                <i class="fas fa-robot text-teal-400 mt-2 mr-3"></i>
+                                <span><strong class="text-white">Machine Learning :</strong> Building predictive models and statistical algorithms</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-network-wired text-teal-400 mt-2 mr-3"></i>
+                                <span><strong class="text-white">Deep Learning :</strong> Designing neural networks using PyTorch and TensorFlow</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-language text-teal-400 mt-2 mr-3"></i>
+                                <span><strong class="text-white">Natural Language Processing :</strong> Developing text analysis and language understanding systems</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-eye text-teal-400 mt-2 mr-3"></i>
+                                <span><strong class="text-white">Computer Vision :</strong> Creating image recognition and visual analysis solutions</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-database text-teal-400 mt-2 mr-3"></i>
+                                <span><strong class="text-white">Data Engineering :</strong> Building robust data pipelines and processing systems</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-4 text-purple-400">
+                            <i class="fas fa-heart mr-3"></i>What Drives Me
+                        </h3>
+                        <p class="text-gray-300 leading-relaxed text-lg">
+                            I'm passionate about bridging the gap between complex AI theory and practical, real-world applications. Every project I undertake is driven by the question: 'How can this technology make a meaningful difference?' Whether it's developing systems for traffic safety, creating tools for better communication, or uncovering insights from massive datasets, I focus on solutions that create tangible value.
+                        </p>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-4 text-green-400">
+                            <i class="fas fa-compass mr-3"></i>My Approach
+                        </h3>
+                        <p class="text-gray-300 leading-relaxed text-lg">
+                            I believe in the power of data-driven decision making and evidence-based solutions. My approach combines rigorous technical implementation with creative problem-solving, ensuring that every AI system I build is not only technically sound but also user-focused and ethically responsible.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Contact Info -->
+                <div class="mt-12 pt-8 border-t border-gray-700">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-sm">
+                        <div class="flex items-center">
+                            <i class="fas fa-graduation-cap text-teal-400 mr-3"></i>
+                            <div>
+                                <div class="font-semibold text-white">Education</div>
+                                <div class="text-gray-400">BS in AI & Data Science</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-university text-blue-400 mr-3"></i>
+                            <div>
+                                <div class="font-semibold text-white">University</div>
+                                <div class="text-gray-400">Menoufia University, Egypt</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-chart-line text-purple-400 mr-3"></i>
+                            <div>
+                                <div class="font-semibold text-white">GPA</div>
+                                <div class="text-gray-400">3.3</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-map-marker-alt text-green-400 mr-3"></i>
+                            <div>
+                                <div class="font-semibold text-white">Location</div>
+                                <div class="text-gray-400">Kafr el-Sheikh, Egypt</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-phone text-teal-400 mr-3"></i>
+                            <div>
+                                <div class="font-semibold text-white">Phone</div>
+                                <div class="text-gray-400">+20 101 801 8692</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope text-blue-400 mr-3"></i>
+                            <div>
+                                <div class="font-semibold text-white">Email</div>
+                                <div class="text-gray-400">abdalarhmanezzat@gmail.com</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section-spacing">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="section-heading gradient-text">Services & Solutions</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Machine Learning Solutions -->
+                <div class="service-card teal p-8">
+                    <div class="text-center mb-6">
+                        <i class="fas fa-robot text-4xl text-teal-400 mb-4"></i>
+                        <h3 class="text-xl font-semibold text-white mb-2">Machine Learning Solutions</h3>
+                    </div>
+                    <ul class="space-y-3 text-gray-300">
+                        <li class="flex items-start">
+                            <i class="fas fa-chart-line text-teal-400 mt-1 mr-3 text-sm"></i>
+                            <span>Custom predictive models for business forecasting</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-sitemap text-teal-400 mt-1 mr-3 text-sm"></i>
+                            <span>Classification and regression algorithms</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-cogs text-teal-400 mt-1 mr-3 text-sm"></i>
+                            <span>Model optimization and performance tuning</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-calculator text-teal-400 mt-1 mr-3 text-sm"></i>
+                            <span>Statistical analysis and data modeling</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Deep Learning Development -->
+                <div class="service-card blue p-8">
+                    <div class="text-center mb-6">
+                        <i class="fas fa-brain text-4xl text-blue-400 mb-4"></i>
+                        <h3 class="text-xl font-semibold text-white mb-2">Deep Learning Development</h3>
+                    </div>
+                    <ul class="space-y-3 text-gray-300">
+                        <li class="flex items-start">
+                            <i class="fas fa-network-wired text-blue-400 mt-1 mr-3 text-sm"></i>
+                            <span>Neural network architecture design</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-eye text-blue-400 mt-1 mr-3 text-sm"></i>
+                            <span>Computer vision applications</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-language text-blue-400 mt-1 mr-3 text-sm"></i>
+                            <span>Natural language processing systems</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-gamepad text-blue-400 mt-1 mr-3 text-sm"></i>
+                            <span>Reinforcement learning agents</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Data Analysis & Visualization -->
+                <div class="service-card purple p-8">
+                    <div class="text-center mb-6">
+                        <i class="fas fa-chart-bar text-4xl text-purple-400 mb-4"></i>
+                        <h3 class="text-xl font-semibold text-white mb-2">Data Analysis & Visualization</h3>
+                    </div>
+                    <ul class="space-y-3 text-gray-300">
+                        <li class="flex items-start">
+                            <i class="fas fa-search text-purple-400 mt-1 mr-3 text-sm"></i>
+                            <span>Exploratory data analysis (EDA)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-tachometer-alt text-purple-400 mt-1 mr-3 text-sm"></i>
+                            <span>Interactive dashboard creation</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-file-chart-line text-purple-400 mt-1 mr-3 text-sm"></i>
+                            <span>Statistical reporting and insights</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-story text-purple-400 mt-1 mr-3 text-sm"></i>
+                            <span>Data storytelling and presentation</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Data Engineering & Pipeline Development -->
+                <div class="service-card green p-8">
+                    <div class="text-center mb-6">
+                        <i class="fas fa-database text-4xl text-green-400 mb-4"></i>
+                        <h3 class="text-xl font-semibold text-white mb-2">Data Engineering & Pipeline Development</h3>
+                    </div>
+                    <ul class="space-y-3 text-gray-300">
+                        <li class="flex items-start">
+                            <i class="fas fa-spider text-green-400 mt-1 mr-3 text-sm"></i>
+                            <span>Web scraping and data collection</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-exchange-alt text-green-400 mt-1 mr-3 text-sm"></i>
+                            <span>ETL pipeline development</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-broom text-green-400 mt-1 mr-3 text-sm"></i>
+                            <span>Data cleaning and preprocessing</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-server text-green-400 mt-1 mr-3 text-sm"></i>
+                            <span>Database design and optimization</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- AI Consulting & Strategy -->
+                <div class="service-card yellow p-8">
+                    <div class="text-center mb-6">
+                        <i class="fas fa-lightbulb text-4xl text-yellow-400 mb-4"></i>
+                        <h3 class="text-xl font-semibold text-white mb-2">AI Consulting & Strategy</h3>
+                    </div>
+                    <ul class="space-y-3 text-gray-300">
+                        <li class="flex items-start">
+                            <i class="fas fa-drafting-compass text-yellow-400 mt-1 mr-3 text-sm"></i>
+                            <span>AI solution architecture planning</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-tools text-yellow-400 mt-1 mr-3 text-sm"></i>
+                            <span>Technology stack recommendations</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-clipboard-check text-yellow-400 mt-1 mr-3 text-sm"></i>
+                            <span>Project feasibility analysis</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-route text-yellow-400 mt-1 mr-3 text-sm"></i>
+                            <span>Implementation roadmap development</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Custom Software Development -->
+                <div class="service-card red p-8">
+                    <div class="text-center mb-6">
+                        <i class="fas fa-code text-4xl text-red-400 mb-4"></i>
+                        <h3 class="text-xl font-semibold text-white mb-2">Custom Software Development</h3>
+                    </div>
+                    <ul class="space-y-3 text-gray-300">
+                        <li class="flex items-start">
+                            <i class="fab fa-python text-red-400 mt-1 mr-3 text-sm"></i>
+                            <span>Python application development</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-window-restore text-red-400 mt-1 mr-3 text-sm"></i>
+                            <span>Streamlit web application creation</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-plug text-red-400 mt-1 mr-3 text-sm"></i>
+                            <span>API development and integration</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-magic text-red-400 mt-1 mr-3 text-sm"></i>
+                            <span>Automation tool development</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section-spacing">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="section-heading gradient-text">Technical Skills</h2>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                <div class="skill-badge p-4 rounded-lg text-center">
+                    <i class="fab fa-python text-2xl mb-2 block"></i>
+                    <span class="text-sm font-medium">Python</span>
+                </div>
+                <div class="skill-badge p-4 rounded-lg text-center">
+                    <i class="fas fa-chart-line text-2xl mb-2 block"></i>
+                    <span class="text-sm font-medium">Statistics</span>
+                </div>
+                <div class="skill-badge p-4 rounded-lg text-center">
+                    <i class="fas fa-robot text-2xl mb-2 block"></i>
+                    <span class="text-sm font-medium">Machine Learning</span>
+                </div>
+                <div class="skill-badge p-4 rounded-lg text-center">
+                    <i class="fas fa-brain text-2xl mb-2 block"></i>
+                    <span class="text-sm font-medium">Deep Learning</span>
+                </div>
+                <div class="skill-badge p-4 rounded-lg text-center">
+                    <i class="fas fa-fire text-2xl mb-2 block"></i>
+                    <span class="text-sm font-medium">PyTorch</span>
+                </div>
+                <div class="skill-badge p-4 rounded-lg text-center">
+                    <i class="fas fa-eye text-2xl mb-2 block"></i>
+                    <span class="text-sm font-medium">Computer Vision</span>
+                </div>
+                <div class="skill-badge p-4 rounded-lg text-center">
+                    <i class="fas fa-language text-2xl mb-2 block"></i>
+                    <span class="text-sm font-medium">NLP</span>
+                </div>
+                <div class="skill-badge p-4 rounded-lg text-center">
+                    <i class="fas fa-clock text-2xl mb-2 block"></i>
+                    <span class="text-sm font-medium">Time Series</span>
+                </div>
+                <div class="skill-badge p-4 rounded-lg text-center">
+                    <i class="fas fa-chart-bar text-2xl mb-2 block"></i>
+                    <span class="text-sm font-medium">Power BI</span>
+                </div>
+                <div class="skill-badge p-4 rounded-lg text-center">
+                    <i class="fas fa-file-excel text-2xl mb-2 block"></i>
+                    <span class="text-sm font-medium">Excel</span>
+                </div>
+                <div class="skill-badge p-4 rounded-lg text-center">
+                    <i class="fas fa-database text-2xl mb-2 block"></i>
+                    <span class="text-sm font-medium">SQL</span>
+                </div>
+                <div class="skill-badge p-4 rounded-lg text-center">
+                    <i class="fas fa-server text-2xl mb-2 block"></i>
+                    <span class="text-sm font-medium">Big Data</span>
+                </div>
+                <div class="skill-badge p-4 rounded-lg text-center">
+                    <i class="fab fa-linux text-2xl mb-2 block"></i>
+                    <span class="text-sm font-medium">Linux</span>
+                </div>
+                <div class="skill-badge p-4 rounded-lg text-center">
+                    <i class="fas fa-spider text-2xl mb-2 block"></i>
+                    <span class="text-sm font-medium">Web Scraping</span>
+                </div>
+                <div class="skill-badge p-4 rounded-lg text-center">
+                    <i class="fas fa-window-restore text-2xl mb-2 block"></i>
+                    <span class="text-sm font-medium">Streamlit</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Experience Section -->
+    <section id="experience" class="section-spacing">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <h2 class="section-heading gradient-text">Work Experience</h2>
+            <div class="work-experience-card p-12 mt-8 rounded-xl border border-gray-700 bg-gradient-to-r from-gray-900 to-gray-800 shadow-lg">
+                <p class="text-2xl md:text-3xl font-semibold text-gray-300 animate-pulse">
+                    Coming Soon...
+                </p>
+                <p class="mt-4 text-gray-400 text-lg">
+                    Stay tuned for exciting updates about my professional journey.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section-spacing">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="section-heading gradient-text">Featured Projects</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card p-8">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-chart-line text-2xl text-teal-400 mr-4"></i>
+                        <h3 class="text-xl font-semibold text-white">Sports Popularity Analysis with Web Scraping</h3>
+                    </div>
+                    <div class="text-sm text-gray-400 mb-4">May 2025</div>
+                    <p class="text-gray-300 mb-4 leading-relaxed">
+                        Conducted comprehensive analysis of global sports popularity trends by developing an automated data collection system that scraped information from Google Trends and YouTube analytics. Built a robust data pipeline handling large-scale web scraping while respecting rate limits and API constraints.
+                    </p>
+                    <div class="mb-4">
+                        <h4 class="font-semibold text-white mb-2">Key Achievements:</h4>
+                        <ul class="text-sm text-gray-300 space-y-1 ml-4">
+                            <li>• Successfully processed over 10,000+ data points across 50+ sports categories</li>
+                            <li>• Identified seasonal trends in sports viewership</li>
+                            <li>• Created predictive models for future popularity spikes</li>
+                            <li>• Applied statistical analysis for correlation patterns</li>
+                        </ul>
+                    </div>
+                    <div class="mb-4">
+                        <h4 class="font-semibold text-white mb-2">Tools:</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-gray-700 rounded text-xs">Python</span>
+                            <span class="px-2 py-1 bg-gray-700 rounded text-xs">BeautifulSoup</span>
+                            <span class="px-2 py-1 bg-gray-700 rounded text-xs">pandas</span>
+                            <span class="px-2 py-1 bg-gray-700 rounded text-xs">matplotlib</span>
+                            <span class="px-2 py-1 bg-gray-700 rounded text-xs">Google Trends API</span>
+                        </div>
+                    </div>
+                    <a href="https://github.com/Abdelrhman941/Sports-Popularity-Project" target="_blank" 
+                       class="inline-flex items-center text-teal-400 hover:text-teal-300 transition-colors">
+                        <i class="fab fa-github mr-2"></i>View on GitHub
+                    </a>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card p-8">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-gamepad text-2xl text-blue-400 mr-4"></i>
+                        <h3 class="text-xl font-semibold text-white">DQN Agent for 2048 Game (Reinforcement Learning)</h3>
+                    </div>
+                    <div class="text-sm text-gray-400 mb-4">May 2025</div>
+                    <p class="text-gray-300 mb-4 leading-relaxed">
+                        Designed and implemented a Deep Q-Learning agent capable of learning optimal strategies for the 2048 puzzle game through reinforcement learning. Demonstrates advanced understanding of neural network architectures and reward-based learning systems.
+                    </p>
+                    <div class="mb-4">
+                        <h4 class="font-semibold text-white mb-2">Key Achievements:</h4>
+                        <ul class="text-sm text-gray-300 space-y-1 ml-4">
+                            <li>• Achieved average scores of 15,000+ points</li>
+                            <li>• Successfully reached 2048 tile in 85% of games</li>
+                            <li>• Demonstrated clear learning progression over 10,000+ training episodes</li>
+                            <li>• Implemented sophisticated reward shaping strategies</li>
+                        </ul>
+                    </div>
+                    <div class="mb-4">
+                        <h4 class="font-semibold text-white mb-2">Tools:</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-gray-700 rounded text-xs">Python</span>
+                            <span class="px-2 py-1 bg-gray-700 rounded text-xs">PyTorch</span>
+                            <span class="px-2 py-1 bg-gray-700 rounded text-xs">NumPy</span>
+                            <span class="px-2 py-1 bg-gray-700 rounded text-xs">Matplotlib</span>
+                            <span class="px-2 py-1 bg-gray-700 rounded text-xs">Reinforcement Learning</span>
+                        </div>
+                    </div>
+                    <a href="https://github.com/Abdelrhman941/2048-Game-Project" target="_blank" 
+                       class="inline-flex items-center text-blue-400 hover:text-blue-300 transition-colors">
+                        <i class="fab fa-github mr-2"></i>View on GitHub
+                    </a>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card p-8">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-spell-check text-2xl text-purple-400 mr-4"></i>
+                        <h3 class="text-xl font-semibold text-white">Auto-Correct System using NLP & Edit Distance</h3>
+                    </div>
+                    <div class="text-sm text-gray-400 mb-4">May 2025</div>
+                    <p class="text-gray-300 mb-4 leading-relaxed">
+                        Developed a sophisticated spelling correction system that mimics Google's "Did you mean...?" functionality using advanced NLP techniques and probabilistic models. The system combines multiple correction strategies to provide highly accurate suggestions.
+                    </p>
+                    <div class="mb-4">
+                        <h4 class="font-semibold text-white mb-2">Key Achievements:</h4>
+                        <ul class="text-sm text-gray-300 space-y-1 ml-4">
+                            <li>• Achieved 92% accuracy on standard spelling correction benchmarks</li>
+                            <li>• Handled over 50,000+ vocabulary words</li>
+                            <li>• Successfully corrected complex multi-word errors</li>
+                            <li>• Built probabilistic language models using trigram analysis</li>
+                        </ul>
+                    </div>
+                    <div class="mb-4">
+                        <h4 class="font-semibold text-white mb-2">Tools:</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-gray-700 rounded text-xs">Python</span>
+                            <span class="px-2 py-1 bg-gray-700 rounded text-xs">NLTK</span>
+                            <span class="px-2 py-1 bg-gray-700 rounded text-xs">spaCy</span>
+                            <span class="px-2 py-1 bg-gray-700 rounded text-xs">Edit Distance</span>
+                            <span class="px-2 py-1 bg-gray-700 rounded text-xs">N-gram models</span>
+                        </div>
+                    </div>
+                    <a href="https://github.com/Abdelrhman941/Auto-correct-Project" target="_blank" 
+                       class="inline-flex items-center text-purple-400 hover:text-purple-300 transition-colors">
+                        <i class="fab fa-github mr-2"></i>View on GitHub
+                    </a>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card p-8">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-traffic-light text-2xl text-green-400 mr-4"></i>
+                        <h3 class="text-xl font-semibold text-white">Traffic Sign Detection and Classification (GTSRB)</h3>
+                    </div>
+                    <div class="text-sm text-gray-400 mb-4">December 2023</div>
+                    <p class="text-gray-300 mb-4 leading-relaxed">
+                        Developed a robust convolutional neural network for real-time traffic sign detection and classification using the German Traffic Sign Recognition Benchmark (GTSRB) dataset. The system is designed for potential integration into autonomous vehicle perception systems.
+                    </p>
+                    <div class="mb-4">
+                        <h4 class="font-semibold text-white mb-2">Key Achievements:</h4>
+                        <ul class="text-sm text-gray-300 space-y-1 ml-4">
+                            <li>• Achieved 98.5% classification accuracy on test set</li>
+                            <li>• Reduced inference time to <50ms per image</li>
+                            <li>• Successfully handled various lighting and weather conditions</li>
+                            <li>• Designed custom CNN architecture with 43 different classes</li>
+                        </ul>
+                    </div>
+                    <div class="mb-4">
+                        <h4 class="font-semibold text-white mb-2">Tools:</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-gray-700 rounded text-xs">Python</span>
+                            <span class="px-2 py-1 bg-gray-700 rounded text-xs">TensorFlow</span>
+                            <span class="px-2 py-1 bg-gray-700 rounded text-xs">Keras</span>
+                            <span class="px-2 py-1 bg-gray-700 rounded text-xs">OpenCV</span>
+                            <span class="px-2 py-1 bg-gray-700 rounded text-xs">Computer Vision</span>
+                        </div>
+                    </div>
+                    <a href="https://github.com/Abdelrhman941/CV-traffic-signs" target="_blank" 
+                       class="inline-flex items-center text-green-400 hover:text-green-300 transition-colors">
+                        <i class="fab fa-github mr-2"></i>View on GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-spacing">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="section-heading gradient-text">Let's Connect</h2>
+            <p class="text-center text-gray-300 mb-10 text-lg">
+                Ready to collaborate on your next AI project? I'm always excited to discuss innovative solutions and new opportunities.
+            </p>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Contact Form -->
+                <div class="section-card p-8">
+                <h3 class="text-xl font-semibold mb-6 text-white">Send Me a Message</h3>
+                <form action="https://formsubmit.co/YOUR_EMAIL@gmail.com" method="POST" class="contact-form space-y-6">
+                    
+                    <input type="hidden" name="_captcha" value="false">
+                    
+                    <input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html">
+                    
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-300 mb-2">Name</label>
+                        <input type="text" id="name" name="name" required 
+                                class="w-full px-4 py-3 rounded-lg focus:ring-2 focus:ring-teal-400 transition-colors">
+                    </div>
+                    
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email</label>
+                        <input type="email" id="email" name="email" required 
+                                class="w-full px-4 py-3 rounded-lg focus:ring-2 focus:ring-teal-400 transition-colors">
+                    </div>
+                    
+                    <div>
+                        <label for="subject" class="block text-sm font-medium text-gray-300 mb-2">Subject</label>
+                        <input type="text" id="subject" name="subject" required 
+                                class="w-full px-4 py-3 rounded-lg focus:ring-2 focus:ring-teal-400 transition-colors">
+                    </div>
+                    
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-gray-300 mb-2">Message</label>
+                        <textarea id="message" name="message" rows="4" required 
+                                    class="w-full px-4 py-3 rounded-lg focus:ring-2 focus:ring-teal-400 transition-colors"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn-primary w-full py-3 px-6 rounded-lg font-semibold">
+                        Send Message
+                    </button>
+                </form>
+                </div>
+
+                
+                <!-- Contact Information -->
+                <div class="space-y-8">
+                    <div class="section-card p-8">
+                        <h3 class="text-xl font-semibold mb-6 text-white">Get in Touch</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <i class="fas fa-envelope text-teal-400 text-xl mt-1 mr-4"></i>
+                                <div>
+                                    <div class="font-semibold text-white">Email</div>
+                                    <a href="mailto:abdalarhmanezzat@gmail.com" class="text-gray-300 hover:text-teal-400 transition-colors">
+                                        abdalarhmanezzat@gmail.com
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fab fa-linkedin text-blue-400 text-xl mt-1 mr-4"></i>
+                                <div>
+                                    <div class="font-semibold text-white">LinkedIn</div>
+                                    <a href="https://www.linkedin.com/in/abdelrhman-a-ezzat/" target="_blank" 
+                                       class="text-gray-300 hover:text-blue-400 transition-colors">
+                                        Connect with me
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fab fa-github text-purple-400 text-xl mt-1 mr-4"></i>
+                                <div>
+                                    <div class="font-semibold text-white">GitHub</div>
+                                    <a href="https://github.com/Abdelrhman941" target="_blank" 
+                                       class="text-gray-300 hover:text-purple-400 transition-colors">
+                                        View my repositories
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="section-card p-8">
+                        <h3 class="text-xl font-semibold mb-4 text-white">Response Time</h3>
+                        <p class="text-gray-300">
+                            I typically respond to messages within 24 hours. For urgent inquiries, 
+                            feel free to reach out via multiple channels.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="text-gray-400 mb-4 md:mb-0">
+                    © 2025 Abdelrhman Ezzat. All rights reserved.
+                </div>
+                <div class="flex space-x-6">
+                    <a href="mailto:abdalarhmanezzat@gmail.com" class="text-gray-400 hover:text-teal-400 transition-colors">
+                        <i class="fas fa-envelope text-xl"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/abdelrhman-a-ezzat/" target="_blank" 
+                       class="text-gray-400 hover:text-blue-400 transition-colors">
+                        <i class="fab fa-linkedin text-xl"></i>
+                    </a>
+                    <a href="https://github.com/Abdelrhman941" target="_blank" 
+                       class="text-gray-400 hover:text-purple-400 transition-colors">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <button onclick="scrollToTop()" class="text-gray-400 hover:text-teal-400 transition-colors">
+                        <i class="fas fa-arrow-up text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const mobileNav = document.getElementById('mobile-nav');
+            mobileNav.classList.toggle('hidden');
+        }
+
+        // Smooth scroll to top
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Active navigation highlighting
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= sectionTop && window.pageYOffset < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function() {
+                const mobileNav = document.getElementById('mobile-nav');
+                if (!mobileNav.classList.contains('hidden')) {
+                    mobileNav.classList.add('hidden');
+                }
+            });
+        });
+
+        // Form submission success message
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            // Show success message after form submission
+            setTimeout(() => {
+                alert('Thank you for your message! I will get back to you soon.');
+            }, 1000);
+        });
+
+        // Add scroll-triggered animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards and sections for animation
+        document.querySelectorAll('.service-card, .project-card, .skill-badge, .work-experience-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
