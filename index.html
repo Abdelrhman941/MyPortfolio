@@ -202,6 +202,91 @@
             box-shadow: 0 5px 15px rgba(0, 207, 167, 0.4);
         }
         
+        /* Download CV Button Styling */
+        .download-cv-btn {
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            min-width: 180px;
+        }
+        
+        .download-cv-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .download-cv-btn:hover::before {
+            left: 100%;
+        }
+        
+        .download-cv-btn:hover {
+            box-shadow: 0 8px 25px rgba(255, 165, 0, 0.3);
+            transform: translateY(-2px) scale(1.02);
+        }
+        
+        .download-cv-btn:active {
+            box-shadow: 0 4px 15px rgba(255, 165, 0, 0.4);
+            transform: translateY(0) scale(0.98);
+        }
+        
+        /* Projects Carousel Styling */
+        .projects-carousel-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .project-nav-btn {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+        .project-nav-btn:hover {
+            box-shadow: 0 6px 20px rgba(0, 207, 167, 0.3);
+        }
+        
+        .project-dot {
+            cursor: pointer;
+        }
+        
+        .project-dot:hover {
+            transform: scale(1.2);
+        }
+        
+        .project-dot.active {
+            background-color: #00cfa7;
+            transform: scale(1.3);
+        }
+        
+        .project-thumbnail {
+            cursor: pointer;
+            text-align: center;
+        }
+        
+        .project-thumbnail:hover {
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Mobile carousel adjustments */
+        @media (max-width: 768px) {
+            .project-slide .project-card {
+                margin: 0 2px;
+            }
+            
+            .project-nav-btn {
+                padding: 0.75rem;
+            }
+            
+            .project-nav-btn i {
+                font-size: 1rem;
+            }
+        }
+        
         .section-spacing {
             padding-top: 4rem;
             padding-bottom: 4rem;
@@ -283,6 +368,42 @@
             .word-ticker.row-2 { font-size: 1.3rem; }
             .word-ticker.row-3 { font-size: 1.6rem; }
             .word-ticker.row-4 { font-size: 1.4rem; }
+            
+            /* Mobile-specific contact card improvements */
+            .section-card {
+                margin: 0 0.5rem;
+            }
+            
+            /* Ensure buttons are touch-friendly on mobile */
+            .btn-primary, .bg-blue-600, .bg-purple-600, .bg-green-600, .download-cv-btn {
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-width: 100px;
+            }
+            
+            /* Improve text readability on mobile */
+            .text-xs {
+                font-size: 0.8rem;
+            }
+            
+            /* Stack contact cards vertically on very small screens */
+            @media (max-width: 480px) {
+                .grid.grid-cols-1.sm\\:grid-cols-2 {
+                    grid-template-columns: 1fr;
+                }
+                
+                .flex.flex-col.sm\\:flex-row {
+                    flex-direction: column;
+                    text-align: center;
+                }
+                
+                .sm\\:mr-4, .md\\:mr-6 {
+                    margin-right: 0 !important;
+                    margin-bottom: 1rem;
+                }
+            }
         }
         
         html {
@@ -455,6 +576,17 @@
                         <p class="text-gray-300 leading-relaxed text-lg">
                             I believe in the power of data-driven decision making and evidence-based solutions. My approach combines rigorous technical implementation with creative problem-solving, ensuring that every AI system I build is not only technically sound but also user-focused and ethically responsible.
                         </p>
+                    </div>
+                    
+                    <!-- Download CV Call-to-Action -->
+                    <div class="text-center py-8">
+                        <div class="inline-block">
+                            <a href="resume/Abdelrhman_Ezzat_CV.pdf" download="" 
+                               class="download-cv-btn inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-white bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-3 focus:ring-orange-500 focus:ring-opacity-50 active:scale-95">
+                                <i class="fas fa-download mr-2"></i>
+                                Download My CV
+                            </a>
+                        </div>
                     </div>
                 </div>
                 
@@ -760,146 +892,186 @@
     <!-- Projects Section -->
     <section id="projects" class="section-spacing">
         <div class="max-w-7xl mx-auto px-4">
-            <h2 class="section-heading gradient-text">Featured Projects</h2>
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <!-- Project 1 -->
-                <div class="project-card p-8">
-                    <div class="flex items-center mb-4">
-                        <i class="fas fa-chart-line text-2xl text-teal-400 mr-4"></i>
-                        <h3 class="text-xl font-semibold text-white">Sports Popularity Analysis with Web Scraping</h3>
-                    </div>
-                    <div class="text-sm text-gray-400 mb-4">May 2025</div>
-                    <p class="text-gray-300 mb-4 leading-relaxed">
-                        Conducted comprehensive analysis of global sports popularity trends by developing an automated data collection system that scraped information from Google Trends and YouTube analytics. Built a robust data pipeline handling large-scale web scraping while respecting rate limits and API constraints.
-                    </p>
-                    <div class="mb-4">
-                        <h4 class="font-semibold text-white mb-2">Key Achievements:</h4>
-                        <ul class="text-sm text-gray-300 space-y-1 ml-4">
-                            <li>• Successfully processed over 10,000+ data points across 50+ sports categories</li>
-                            <li>• Identified seasonal trends in sports viewership</li>
-                            <li>• Created predictive models for future popularity spikes</li>
-                            <li>• Applied statistical analysis for correlation patterns</li>
-                        </ul>
-                    </div>
-                    <div class="mb-4">
-                        <h4 class="font-semibold text-white mb-2">Tools:</h4>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-2 py-1 bg-gray-700 rounded text-xs">Python</span>
-                            <span class="px-2 py-1 bg-gray-700 rounded text-xs">BeautifulSoup</span>
-                            <span class="px-2 py-1 bg-gray-700 rounded text-xs">pandas</span>
-                            <span class="px-2 py-1 bg-gray-700 rounded text-xs">matplotlib</span>
-                            <span class="px-2 py-1 bg-gray-700 rounded text-xs">Google Trends API</span>
-                        </div>
-                    </div>
-                    <a href="https://github.com/Abdelrhman941/Sports-Popularity-Project" target="_blank" 
-                       class="inline-flex items-center text-teal-400 hover:text-teal-300 transition-colors">
-                        <i class="fab fa-github mr-2"></i>View on GitHub
-                    </a>
+            <h2 class="section-heading gradient-text">My Projects</h2>
+            
+            <!-- Quick Navigation Grid (for users who want to see all projects quickly) -->
+            <div class="mb-12">
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                    <button onclick="goToProject(0)" class="project-thumbnail bg-gray-800 hover:bg-gray-700 p-4 rounded-lg transition-all duration-300 hover:scale-105 border-l-4 border-teal-400">
+                        <i class="fas fa-chart-line text-teal-400 text-2xl mb-2"></i>
+                        <h4 class="text-white text-sm font-semibold">Sports Analysis</h4>
+                        <p class="text-gray-400 text-xs">Web Scraping & ML</p>
+                    </button>
+                    <button onclick="goToProject(1)" class="project-thumbnail bg-gray-800 hover:bg-gray-700 p-4 rounded-lg transition-all duration-300 hover:scale-105 border-l-4 border-blue-400">
+                        <i class="fas fa-gamepad text-blue-400 text-2xl mb-2"></i>
+                        <h4 class="text-white text-sm font-semibold">2048 DQN Agent</h4>
+                        <p class="text-gray-400 text-xs">Reinforcement Learning</p>
+                    </button>
+                    <button onclick="goToProject(2)" class="project-thumbnail bg-gray-800 hover:bg-gray-700 p-4 rounded-lg transition-all duration-300 hover:scale-105 border-l-4 border-purple-400">
+                        <i class="fas fa-spell-check text-purple-400 text-2xl mb-2"></i>
+                        <h4 class="text-white text-sm font-semibold">Auto-Correct System</h4>
+                        <p class="text-gray-400 text-xs">NLP & Edit Distance</p>
+                    </button>
+                    <button onclick="goToProject(3)" class="project-thumbnail bg-gray-800 hover:bg-gray-700 p-4 rounded-lg transition-all duration-300 hover:scale-105 border-l-4 border-green-400">
+                        <i class="fas fa-traffic-light text-green-400 text-2xl mb-2"></i>
+                        <h4 class="text-white text-sm font-semibold">Traffic Sign Detection</h4>
+                        <p class="text-gray-400 text-xs">Computer Vision</p>
+                    </button>
                 </div>
-
-                <!-- Project 2 -->
-                <div class="project-card p-8">
-                    <div class="flex items-center mb-4">
-                        <i class="fas fa-gamepad text-2xl text-blue-400 mr-4"></i>
-                        <h3 class="text-xl font-semibold text-white">DQN Agent for 2048 Game (Reinforcement Learning)</h3>
-                    </div>
-                    <div class="text-sm text-gray-400 mb-4">May 2025</div>
-                    <p class="text-gray-300 mb-4 leading-relaxed">
-                        Designed and implemented a Deep Q-Learning agent capable of learning optimal strategies for the 2048 puzzle game through reinforcement learning. Demonstrates advanced understanding of neural network architectures and reward-based learning systems.
-                    </p>
-                    <div class="mb-4">
-                        <h4 class="font-semibold text-white mb-2">Key Achievements:</h4>
-                        <ul class="text-sm text-gray-300 space-y-1 ml-4">
-                            <li>• Achieved average scores of 15,000+ points</li>
-                            <li>• Successfully reached 2048 tile in 85% of games</li>
-                            <li>• Demonstrated clear learning progression over 10,000+ training episodes</li>
-                            <li>• Implemented sophisticated reward shaping strategies</li>
-                        </ul>
-                    </div>
-                    <div class="mb-4">
-                        <h4 class="font-semibold text-white mb-2">Tools:</h4>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-2 py-1 bg-gray-700 rounded text-xs">Python</span>
-                            <span class="px-2 py-1 bg-gray-700 rounded text-xs">PyTorch</span>
-                            <span class="px-2 py-1 bg-gray-700 rounded text-xs">NumPy</span>
-                            <span class="px-2 py-1 bg-gray-700 rounded text-xs">Matplotlib</span>
-                            <span class="px-2 py-1 bg-gray-700 rounded text-xs">Reinforcement Learning</span>
+            </div>
+            
+            <!-- Projects Carousel Container -->
+            <div class="projects-carousel-container relative overflow-hidden">
+                <div class="projects-carousel flex transition-transform duration-500 ease-in-out" id="projectsCarousel">
+                    
+                    <!-- Project 1 -->
+                    <div class="project-slide w-full flex-shrink-0">
+                        <div class="project-card p-8 mx-4">
+                            <div class="flex items-center mb-4">
+                                <i class="fas fa-chart-line text-2xl text-teal-400 mr-4"></i>
+                                <h3 class="text-xl font-semibold text-white">Sports Popularity Analysis with Web Scraping</h3>
+                            </div>
+                            <div class="text-sm text-gray-400 mb-4">May 2025</div>
+                            <p class="text-gray-300 mb-4 leading-relaxed">
+                                Conducted comprehensive analysis of global sports popularity trends by developing an automated data collection system that scraped information from Google Trends and YouTube analytics. Built a robust data pipeline handling large-scale web scraping while respecting rate limits and API constraints.
+                            </p>
+                            <div class="mb-4">
+                                <h4 class="font-semibold text-white mb-2">Key Achievements:</h4>
+                                <ul class="text-sm text-gray-300 space-y-1 ml-4">
+                                    <li>• Successfully processed over 10,000+ data points across 50+ sports categories</li>
+                                    <li>• Identified seasonal trends in sports viewership</li>
+                                    <li>• Created predictive models for future popularity spikes</li>
+                                    <li>• Applied statistical analysis for correlation patterns</li>
+                                </ul>
+                            </div>
+                            <div class="mb-4">
+                                <h4 class="font-semibold text-white mb-2">Tools:</h4>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-2 py-1 bg-gray-700 rounded text-xs">Python</span>
+                                    <span class="px-2 py-1 bg-gray-700 rounded text-xs">BeautifulSoup</span>
+                                    <span class="px-2 py-1 bg-gray-700 rounded text-xs">pandas</span>
+                                    <span class="px-2 py-1 bg-gray-700 rounded text-xs">matplotlib</span>
+                                    <span class="px-2 py-1 bg-gray-700 rounded text-xs">Google Trends API</span>
+                                </div>
+                            </div>
+                            <a href="https://github.com/Abdelrhman941/Sports-Popularity-Project" target="_blank" 
+                               class="inline-flex items-center text-teal-400 hover:text-teal-300 transition-colors">
+                                <i class="fab fa-github mr-2"></i>View on GitHub
+                            </a>
                         </div>
                     </div>
-                    <a href="https://github.com/Abdelrhman941/2048-Game-Project" target="_blank" 
-                       class="inline-flex items-center text-blue-400 hover:text-blue-300 transition-colors">
-                        <i class="fab fa-github mr-2"></i>View on GitHub
-                    </a>
-                </div>
 
-                <!-- Project 3 -->
-                <div class="project-card p-8">
-                    <div class="flex items-center mb-4">
-                        <i class="fas fa-spell-check text-2xl text-purple-400 mr-4"></i>
-                        <h3 class="text-xl font-semibold text-white">Auto-Correct System using NLP & Edit Distance</h3>
-                    </div>
-                    <div class="text-sm text-gray-400 mb-4">May 2025</div>
-                    <p class="text-gray-300 mb-4 leading-relaxed">
-                        Developed a sophisticated spelling correction system that mimics Google's "Did you mean...?" functionality using advanced NLP techniques and probabilistic models. The system combines multiple correction strategies to provide highly accurate suggestions.
-                    </p>
-                    <div class="mb-4">
-                        <h4 class="font-semibold text-white mb-2">Key Achievements:</h4>
-                        <ul class="text-sm text-gray-300 space-y-1 ml-4">
-                            <li>• Achieved 92% accuracy on standard spelling correction benchmarks</li>
-                            <li>• Handled over 50,000+ vocabulary words</li>
-                            <li>• Successfully corrected complex multi-word errors</li>
-                            <li>• Built probabilistic language models using trigram analysis</li>
-                        </ul>
-                    </div>
-                    <div class="mb-4">
-                        <h4 class="font-semibold text-white mb-2">Tools:</h4>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-2 py-1 bg-gray-700 rounded text-xs">Python</span>
-                            <span class="px-2 py-1 bg-gray-700 rounded text-xs">NLTK</span>
-                            <span class="px-2 py-1 bg-gray-700 rounded text-xs">spaCy</span>
-                            <span class="px-2 py-1 bg-gray-700 rounded text-xs">Edit Distance</span>
-                            <span class="px-2 py-1 bg-gray-700 rounded text-xs">N-gram models</span>
+                    <!-- Project 2 -->
+                    <div class="project-slide w-full flex-shrink-0">
+                        <div class="project-card p-8 mx-4">
+                            <div class="flex items-center mb-4">
+                                <i class="fas fa-gamepad text-2xl text-blue-400 mr-4"></i>
+                                <h3 class="text-xl font-semibold text-white">DQN Agent for 2048 Game (Reinforcement Learning)</h3>
+                            </div>
+                            <div class="text-sm text-gray-400 mb-4">May 2025</div>
+                            <p class="text-gray-300 mb-4 leading-relaxed">
+                                Designed and implemented a Deep Q-Learning agent capable of learning optimal strategies for the 2048 puzzle game through reinforcement learning. Demonstrates advanced understanding of neural network architectures and reward-based learning systems.
+                            </p>
+                            <div class="mb-4">
+                                <h4 class="font-semibold text-white mb-2">Key Achievements:</h4>
+                                <ul class="text-sm text-gray-300 space-y-1 ml-4">
+                                    <li>• Achieved average scores of 15,000+ points</li>
+                                    <li>• Successfully reached 2048 tile in 85% of games</li>
+                                    <li>• Demonstrated clear learning progression over 10,000+ training episodes</li>
+                                    <li>• Implemented sophisticated reward shaping strategies</li>
+                                </ul>
+                            </div>
+                            <div class="mb-4">
+                                <h4 class="font-semibold text-white mb-2">Tools:</h4>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-2 py-1 bg-gray-700 rounded text-xs">Python</span>
+                                    <span class="px-2 py-1 bg-gray-700 rounded text-xs">PyTorch</span>
+                                    <span class="px-2 py-1 bg-gray-700 rounded text-xs">NumPy</span>
+                                    <span class="px-2 py-1 bg-gray-700 rounded text-xs">Matplotlib</span>
+                                    <span class="px-2 py-1 bg-gray-700 rounded text-xs">Reinforcement Learning</span>
+                                </div>
+                            </div>
+                            <a href="https://github.com/Abdelrhman941/2048-Game-Project" target="_blank" 
+                               class="inline-flex items-center text-blue-400 hover:text-blue-300 transition-colors">
+                                <i class="fab fa-github mr-2"></i>View on GitHub
+                            </a>
                         </div>
                     </div>
-                    <a href="https://github.com/Abdelrhman941/Auto-correct-Project" target="_blank" 
-                       class="inline-flex items-center text-purple-400 hover:text-purple-300 transition-colors">
-                        <i class="fab fa-github mr-2"></i>View on GitHub
-                    </a>
-                </div>
 
-                <!-- Project 4 -->
-                <div class="project-card p-8">
-                    <div class="flex items-center mb-4">
-                        <i class="fas fa-traffic-light text-2xl text-green-400 mr-4"></i>
-                        <h3 class="text-xl font-semibold text-white">Traffic Sign Detection and Classification (GTSRB)</h3>
-                    </div>
-                    <div class="text-sm text-gray-400 mb-4">December 2023</div>
-                    <p class="text-gray-300 mb-4 leading-relaxed">
-                        Developed a robust convolutional neural network for real-time traffic sign detection and classification using the German Traffic Sign Recognition Benchmark (GTSRB) dataset. The system is designed for potential integration into autonomous vehicle perception systems.
-                    </p>
-                    <div class="mb-4">
-                        <h4 class="font-semibold text-white mb-2">Key Achievements:</h4>
-                        <ul class="text-sm text-gray-300 space-y-1 ml-4">
-                            <li>• Achieved 98.5% classification accuracy on test set</li>
-                            <li>• Reduced inference time to <50ms per image</li>
-                            <li>• Successfully handled various lighting and weather conditions</li>
-                            <li>• Designed custom CNN architecture with 43 different classes</li>
-                        </ul>
-                    </div>
-                    <div class="mb-4">
-                        <h4 class="font-semibold text-white mb-2">Tools:</h4>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-2 py-1 bg-gray-700 rounded text-xs">Python</span>
-                            <span class="px-2 py-1 bg-gray-700 rounded text-xs">TensorFlow</span>
-                            <span class="px-2 py-1 bg-gray-700 rounded text-xs">Keras</span>
-                            <span class="px-2 py-1 bg-gray-700 rounded text-xs">OpenCV</span>
-                            <span class="px-2 py-1 bg-gray-700 rounded text-xs">Computer Vision</span>
+                    <!-- Project 3 -->
+                    <div class="project-slide w-full flex-shrink-0">
+                        <div class="project-card p-8 mx-4">
+                            <div class="flex items-center mb-4">
+                                <i class="fas fa-spell-check text-2xl text-purple-400 mr-4"></i>
+                                <h3 class="text-xl font-semibold text-white">Auto-Correct System using NLP & Edit Distance</h3>
+                            </div>
+                            <div class="text-sm text-gray-400 mb-4">May 2025</div>
+                            <p class="text-gray-300 mb-4 leading-relaxed">
+                                Developed a sophisticated spelling correction system that mimics Google's "Did you mean...?" functionality using advanced NLP techniques and probabilistic models. The system combines multiple correction strategies to provide highly accurate suggestions.
+                            </p>
+                            <div class="mb-4">
+                                <h4 class="font-semibold text-white mb-2">Key Achievements:</h4>
+                                <ul class="text-sm text-gray-300 space-y-1 ml-4">
+                                    <li>• Achieved 92% accuracy on standard spelling correction benchmarks</li>
+                                    <li>• Handled over 50,000+ vocabulary words</li>
+                                    <li>• Successfully corrected complex multi-word errors</li>
+                                    <li>• Built probabilistic language models using trigram analysis</li>
+                                </ul>
+                            </div>
+                            <div class="mb-4">
+                                <h4 class="font-semibold text-white mb-2">Tools:</h4>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-2 py-1 bg-gray-700 rounded text-xs">Python</span>
+                                    <span class="px-2 py-1 bg-gray-700 rounded text-xs">NLTK</span>
+                                    <span class="px-2 py-1 bg-gray-700 rounded text-xs">spaCy</span>
+                                    <span class="px-2 py-1 bg-gray-700 rounded text-xs">Edit Distance</span>
+                                    <span class="px-2 py-1 bg-gray-700 rounded text-xs">N-gram models</span>
+                                </div>
+                            </div>
+                            <a href="https://github.com/Abdelrhman941/Auto-correct-Project" target="_blank" 
+                               class="inline-flex items-center text-purple-400 hover:text-purple-300 transition-colors">
+                                <i class="fab fa-github mr-2"></i>View on GitHub
+                            </a>
                         </div>
                     </div>
-                    <a href="https://github.com/Abdelrhman941/CV-traffic-signs" target="_blank" 
-                       class="inline-flex items-center text-green-400 hover:text-green-300 transition-colors">
-                        <i class="fab fa-github mr-2"></i>View on GitHub
-                    </a>
+
+                    <!-- Project 4 -->
+                    <div class="project-slide w-full flex-shrink-0">
+                        <div class="project-card p-8 mx-4">
+                            <div class="flex items-center mb-4">
+                                <i class="fas fa-traffic-light text-2xl text-green-400 mr-4"></i>
+                                <h3 class="text-xl font-semibold text-white">Traffic Sign Detection and Classification (GTSRB)</h3>
+                            </div>
+                            <div class="text-sm text-gray-400 mb-4">December 2023</div>
+                            <p class="text-gray-300 mb-4 leading-relaxed">
+                                Developed a robust convolutional neural network for real-time traffic sign detection and classification using the German Traffic Sign Recognition Benchmark (GTSRB) dataset. The system is designed for potential integration into autonomous vehicle perception systems.
+                            </p>
+                            <div class="mb-4">
+                                <h4 class="font-semibold text-white mb-2">Key Achievements:</h4>
+                                <ul class="text-sm text-gray-300 space-y-1 ml-4">
+                                    <li>• Achieved 98.5% classification accuracy on test set</li>
+                                    <li>• Reduced inference time to <50ms per image</li>
+                                    <li>• Successfully handled various lighting and weather conditions</li>
+                                    <li>• Designed custom CNN architecture with 43 different classes</li>
+                                </ul>
+                            </div>
+                            <div class="mb-4">
+                                <h4 class="font-semibold text-white mb-2">Tools:</h4>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-2 py-1 bg-gray-700 rounded text-xs">Python</span>
+                                    <span class="px-2 py-1 bg-gray-700 rounded text-xs">TensorFlow</span>
+                                    <span class="px-2 py-1 bg-gray-700 rounded text-xs">Keras</span>
+                                    <span class="px-2 py-1 bg-gray-700 rounded text-xs">OpenCV</span>
+                                    <span class="px-2 py-1 bg-gray-700 rounded text-xs">Computer Vision</span>
+                                </div>
+                            </div>
+                            <a href="https://github.com/Abdelrhman941/CV-traffic-signs" target="_blank" 
+                               class="inline-flex items-center text-green-400 hover:text-green-300 transition-colors">
+                                <i class="fab fa-github mr-2"></i>View on GitHub
+                            </a>
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -913,89 +1085,65 @@
                 Ready to collaborate on your next AI project? I'm always excited to discuss innovative solutions and new opportunities.
             </p>
             
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                <!-- Contact Form -->
-                <div class="section-card p-8">
-                <h3 class="text-xl font-semibold mb-6 text-white">Send Me a Message</h3>
-                <form action="https://formsubmit.co/YOUR_EMAIL@gmail.com" method="POST" class="contact-form space-y-6">
+            <div class="max-w-4xl mx-auto">
+                <!-- Single Centered Contact Card -->
+                <div class="section-card p-6 md:p-10 lg:p-12">
                     
-                    <input type="hidden" name="_captcha" value="false">
-                    
-                    <input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html">
-                    
-                    <div>
-                        <label for="name" class="block text-sm font-medium text-gray-300 mb-2">Name</label>
-                        <input type="text" id="name" name="name" required 
-                                class="w-full px-4 py-3 rounded-lg focus:ring-2 focus:ring-teal-400 transition-colors">
-                    </div>
-                    
-                    <div>
-                        <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email</label>
-                        <input type="email" id="email" name="email" required 
-                                class="w-full px-4 py-3 rounded-lg focus:ring-2 focus:ring-teal-400 transition-colors">
-                    </div>
-                    
-                    <div>
-                        <label for="subject" class="block text-sm font-medium text-gray-300 mb-2">Subject</label>
-                        <input type="text" id="subject" name="subject" required 
-                                class="w-full px-4 py-3 rounded-lg focus:ring-2 focus:ring-teal-400 transition-colors">
-                    </div>
-                    
-                    <div>
-                        <label for="message" class="block text-sm font-medium text-gray-300 mb-2">Message</label>
-                        <textarea id="message" name="message" rows="4" required 
-                                    class="w-full px-4 py-3 rounded-lg focus:ring-2 focus:ring-teal-400 transition-colors"></textarea>
-                    </div>
-                    
-                    <button type="submit" class="btn-primary w-full py-3 px-6 rounded-lg font-semibold">
-                        Send Message
-                    </button>
-                </form>
-                </div>
-
-                
-                <!-- Contact Information -->
-                <div class="space-y-8">
-                    <div class="section-card p-8">
-                        <h3 class="text-xl font-semibold mb-6 text-white">Get in Touch</h3>
-                        <div class="space-y-6">
-                            <div class="flex items-start">
-                                <i class="fas fa-envelope text-teal-400 text-xl mt-1 mr-4"></i>
-                                <div>
-                                    <div class="font-semibold text-white">Email</div>
-                                    <a href="mailto:abdalarhmanezzat@gmail.com" class="text-gray-300 hover:text-teal-400 transition-colors">
-                                        abdalarhmanezzat@gmail.com
-                                    </a>
-                                </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
+                        <div class="flex flex-col sm:flex-row items-center p-4 md:p-6 bg-gray-800 rounded-xl hover:bg-gray-700 transition-all duration-300 hover:scale-105 text-center sm:text-left">
+                            <i class="fas fa-envelope text-teal-400 text-2xl md:text-3xl mb-3 sm:mb-0 sm:mr-4 md:mr-6"></i>
+                            <div class="flex-1">
+                                <div class="font-semibold text-white text-base md:text-lg">Email</div>
+                                <div class="text-gray-300 text-xs md:text-sm mb-3 break-all">abdalarhmanezzat@gmail.com</div>
+                                <a href="mailto:abdalarhmanezzat@gmail.com" class="btn-primary py-2 px-3 md:px-4 rounded-lg text-xs md:text-sm inline-block">
+                                    Send Email
+                                </a>
                             </div>
-                            <div class="flex items-start">
-                                <i class="fab fa-linkedin text-blue-400 text-xl mt-1 mr-4"></i>
-                                <div>
-                                    <div class="font-semibold text-white">LinkedIn</div>
-                                    <a href="https://www.linkedin.com/in/abdelrhman-a-ezzat/" target="_blank" 
-                                       class="text-gray-300 hover:text-blue-400 transition-colors">
-                                        Connect with me
-                                    </a>
-                                </div>
+                        </div>
+                        
+                        <div class="flex flex-col sm:flex-row items-center p-4 md:p-6 bg-gray-800 rounded-xl hover:bg-gray-700 transition-all duration-300 hover:scale-105 text-center sm:text-left">
+                            <i class="fab fa-linkedin text-blue-400 text-2xl md:text-3xl mb-3 sm:mb-0 sm:mr-4 md:mr-6"></i>
+                            <div class="flex-1">
+                                <div class="font-semibold text-white text-base md:text-lg">LinkedIn</div>
+                                <div class="text-gray-300 text-xs md:text-sm mb-3">Professional Network</div>
+                                <a href="https://www.linkedin.com/in/abdelrhman-a-ezzat/" target="_blank" 
+                                   class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-3 md:px-4 rounded-lg text-xs md:text-sm transition-colors inline-block">
+                                    Connect
+                                </a>
                             </div>
-                            <div class="flex items-start">
-                                <i class="fab fa-github text-purple-400 text-xl mt-1 mr-4"></i>
-                                <div>
-                                    <div class="font-semibold text-white">GitHub</div>
-                                    <a href="https://github.com/Abdelrhman941" target="_blank" 
-                                       class="text-gray-300 hover:text-purple-400 transition-colors">
-                                        View my repositories
-                                    </a>
-                                </div>
+                        </div>
+                        
+                        <div class="flex flex-col sm:flex-row items-center p-4 md:p-6 bg-gray-800 rounded-xl hover:bg-gray-700 transition-all duration-300 hover:scale-105 text-center sm:text-left">
+                            <i class="fab fa-github text-purple-400 text-2xl md:text-3xl mb-3 sm:mb-0 sm:mr-4 md:mr-6"></i>
+                            <div class="flex-1">
+                                <div class="font-semibold text-white text-base md:text-lg">GitHub</div>
+                                <div class="text-gray-300 text-xs md:text-sm mb-3">Code Repository</div>
+                                <a href="https://github.com/Abdelrhman941" target="_blank" 
+                                   class="bg-purple-600 hover:bg-purple-700 text-white py-2 px-3 md:px-4 rounded-lg text-xs md:text-sm transition-colors inline-block">
+                                    View Code
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex flex-col sm:flex-row items-center p-4 md:p-6 bg-gray-800 rounded-xl hover:bg-gray-700 transition-all duration-300 hover:scale-105 text-center sm:text-left">
+                            <i class="fab fa-whatsapp text-green-400 text-2xl md:text-3xl mb-3 sm:mb-0 sm:mr-4 md:mr-6"></i>
+                            <div class="flex-1">
+                                <div class="font-semibold text-white text-base md:text-lg">WhatsApp</div>
+                                <div class="text-gray-300 text-xs md:text-sm mb-3">+20 101 801 8692</div>
+                                <a href="https://wa.me/201018018692?text=Hi%20Abdelrhman,%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect." 
+                                   target="_blank" 
+                                   class="bg-green-600 hover:bg-green-700 text-white py-2 px-3 md:px-4 rounded-lg text-xs md:text-sm transition-colors inline-block">
+                                    Chat Now
+                                </a>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="section-card p-8">
-                        <h3 class="text-xl font-semibold mb-4 text-white">Response Time</h3>
-                        <p class="text-gray-300">
-                            I typically respond to messages within 24 hours. For urgent inquiries, 
-                            feel free to reach out via multiple channels.
+                    <!-- Quick Response Info -->
+                    <div class="mt-8 md:mt-10 pt-6 md:pt-8 border-t border-gray-700 text-center">
+                        <p class="text-gray-400 text-sm md:text-base">
+                            <i class="fas fa-clock text-teal-400 mr-2"></i>
+                            I typically respond within <span class="text-teal-400 font-semibold">2-6 hours</span> during business days
                         </p>
                     </div>
                 </div>
@@ -1010,18 +1158,7 @@
                 <div class="text-gray-400 mb-4 md:mb-0">
                     © 2025 Abdelrhman Ezzat. All rights reserved.
                 </div>
-                <div class="flex space-x-6">
-                    <a href="mailto:abdalarhmanezzat@gmail.com" class="text-gray-400 hover:text-teal-400 transition-colors">
-                        <i class="fas fa-envelope text-xl"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/abdelrhman-a-ezzat/" target="_blank" 
-                       class="text-gray-400 hover:text-blue-400 transition-colors">
-                        <i class="fab fa-linkedin text-xl"></i>
-                    </a>
-                    <a href="https://github.com/Abdelrhman941" target="_blank" 
-                       class="text-gray-400 hover:text-purple-400 transition-colors">
-                        <i class="fab fa-github text-xl"></i>
-                    </a>
+                <div class="flex items-center">
                     <button onclick="scrollToTop()" class="text-gray-400 hover:text-teal-400 transition-colors">
                         <i class="fas fa-arrow-up text-xl"></i>
                     </button>
@@ -1074,14 +1211,6 @@
             });
         });
 
-        // Form submission success message
-        document.querySelector('.contact-form').addEventListener('submit', function(e) {
-            // Show success message after form submission
-            setTimeout(() => {
-                alert('Thank you for your message! I will get back to you soon.');
-            }, 1000);
-        });
-
         // Add scroll-triggered animations
         const observerOptions = {
             threshold: 0.1,
@@ -1103,6 +1232,92 @@
             el.style.transform = 'translateY(20px)';
             el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
             observer.observe(el);
+        });
+        
+        // Projects Carousel Functionality
+        let currentProject = 0;
+        const totalProjects = 4;
+        const carousel = document.getElementById('projectsCarousel');
+        const dots = document.querySelectorAll('.project-dot');
+        
+        function updateCarousel() {
+            const translateX = -(currentProject * 100);
+            carousel.style.transform = `translateX(${translateX}%)`;
+            
+            // Update dots
+            dots.forEach((dot, index) => {
+                if (index === currentProject) {
+                    dot.classList.add('active');
+                    dot.classList.remove('bg-gray-600');
+                    dot.classList.add('bg-teal-400');
+                } else {
+                    dot.classList.remove('active');
+                    dot.classList.remove('bg-teal-400');
+                    dot.classList.add('bg-gray-600');
+                }
+            });
+        }
+        
+        function nextProject() {
+            currentProject = (currentProject + 1) % totalProjects;
+            updateCarousel();
+        }
+        
+        function prevProject() {
+            currentProject = (currentProject - 1 + totalProjects) % totalProjects;
+            updateCarousel();
+        }
+        
+        function goToProject(index) {
+            currentProject = index;
+            updateCarousel();
+            // Smooth scroll to carousel
+            document.querySelector('#projects').scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'center'
+            });
+        }
+        
+        // Event listeners
+        document.getElementById('nextProject').addEventListener('click', nextProject);
+        document.getElementById('prevProject').addEventListener('click', prevProject);
+        
+        // Dot navigation
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => goToProject(index));
+        });
+        
+        // Auto-play (optional - uncomment to enable)
+        // setInterval(nextProject, 5000);
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                prevProject();
+            } else if (e.key === 'ArrowRight') {
+                nextProject();
+            }
+        });
+        
+        // Touch/swipe support for mobile
+        let startX = 0;
+        let endX = 0;
+        
+        carousel.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+        });
+        
+        carousel.addEventListener('touchend', (e) => {
+            endX = e.changedTouches[0].clientX;
+            const diff = startX - endX;
+            
+            if (Math.abs(diff) > 50) { // Minimum swipe distance
+                if (diff > 0) {
+                    nextProject();
+                } else {
+                    prevProject();
+                }
+            }
         });
     </script>
 </body>
