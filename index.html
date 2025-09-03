@@ -351,7 +351,7 @@
         }
         
         .mobile-menu {
-            display: none;
+            
         }
         
         .work-experience-card {
@@ -375,7 +375,7 @@
             }
             
             .mobile-menu { 
-                display: block; 
+                
             }
             
             /* Navigation improvements */
@@ -1425,12 +1425,23 @@
         // Mobile Menu Toggle
         function toggleMobileMenu() {
             const mobileNav = document.getElementById('mobile-nav');
+            const buttonIcon = document.querySelector('.mobile-menu-btn i');
             mobileNav.classList.toggle('hidden');
+            if (mobileNav.classList.contains('hidden')) {
+                buttonIcon.classList.remove('fa-times');
+                buttonIcon.classList.add('fa-bars');
+            } else {
+                buttonIcon.classList.remove('fa-bars');
+                buttonIcon.classList.add('fa-times');
+            }
         }
         
         function closeMobileMenu() {
             const mobileNav = document.getElementById('mobile-nav');
+            const buttonIcon = document.querySelector('.mobile-menu-btn i');
             mobileNav.classList.add('hidden');
+            buttonIcon.classList.remove('fa-times');
+            buttonIcon.classList.add('fa-bars');
         }
 
         // Smooth scroll to top
@@ -1540,6 +1551,9 @@
         document.addEventListener('DOMContentLoaded', function() {
             // Initialize carousel
             updateCarousel();
+            
+            // Close mobile menu initially if needed
+            closeMobileMenu();
             
             // Event listeners for navigation buttons
             const nextBtn = document.getElementById('nextProject');
