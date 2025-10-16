@@ -1,31 +1,16 @@
-# Abdelrhman's Portfolio
+# Run and deploy your AI Studio app
 
-Welcome to my website!   
-You can visit it live here: [ Website🌐](https://abdelrhman941.github.io/)
+- This contains everything you need to run your app locally.
 
----
+View your app in AI Studio: https://ai.studio/apps/drive/1DkaTS6mVjvj4H8BCvKl6-T27dJkkFq_K
 
-## About This Site
-This is my personal portfolio website where I showcase my projects, skills, and achievements in **Data Science, AI, and web development**.  
-It is built with **HTML** and hosted on **GitHub Pages**, giving you a fast and reliable way to explore my work.
+## Run Locally
 
----
+**Prerequisites:**  Node.js
 
-## Features
-- Clean and modern design
-- Fully hosted online via GitHub Pages
-- Showcases my projects and portfolio
-- Easy navigation and responsive layout
 
----
-
-## Explore
-- See my latest projects and experiments
-- Learn about my skills and expertise
-- Get in touch for collaboration opportunities
-
----
-
-## Contact
-Feel free to reach out to me for any questions, collaborations, or just to say hi!  
-[Email](mailto:abdalarhmanezzat@gmail.com) | [LinkedIn](https://www.linkedin.com/in/abdelrhman-a-ezzat/)
+1. Install dependencies:
+   `npm install`
+2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
+3. Run the app:
+   `npm run dev`
