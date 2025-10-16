@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import cvFile from '../resume/Abdelrhman_Ezzat_CV.pdf';
 
 const NAV_LINKS = [
   { href: '#about', label: 'About' },
@@ -66,11 +67,8 @@ const Navbar: React.FC = () => {
             </div>
             
             <div className="hidden md:flex items-center space-x-4">
-              <a href="https://www.linkedin.com/in/abdelrhman-a-ezzat/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors" aria-label="LinkedIn"><i className="fab fa-linkedin text-xl"></i></a>
-              <a href="https://github.com/Abdelrhman941" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors" aria-label="GitHub"><i className="fab fa-github text-xl"></i></a>
-              <div className="h-4 w-px bg-white/20"></div>
               <a href="#contact" className="px-3 py-2 text-sm font-medium text-gray-300 hover:text-white transition-colors">Contact</a>
-              <a href="resume/Abdelrhman_Ezzat_CV.pdf" download className="px-4 py-2 text-sm font-semibold bg-white text-black rounded-full hover:bg-gray-200 transition-all duration-300 transform hover:scale-105">
+              <a href={cvFile} download className="px-4 py-2 text-sm font-semibold bg-white text-black rounded-full hover:bg-gray-200 transition-all duration-300 transform hover:scale-105">
                 Download CV
               </a>
             </div>
@@ -95,13 +93,9 @@ const Navbar: React.FC = () => {
             <div className="flex flex-col items-center justify-center space-y-6 text-lg font-medium">
               {[...NAV_LINKS, { href: '#contact', label: 'Contact' }].map(link => <NavLink key={link.href} href={link.href} isMobile>{link.label}</NavLink>)}
             </div>
-            <a href="resume/Abdelrhman_Ezzat_CV.pdf" download className="mt-8 px-6 py-3 text-base font-semibold bg-white text-black rounded-full hover:bg-gray-200 transition-colors">
+            <a href={cvFile} download className="mt-8 px-6 py-3 text-base font-semibold bg-white text-black rounded-full hover:bg-gray-200 transition-colors">
               Download CV
             </a>
-            <div className="mt-8 flex items-center space-x-6">
-                <a href="https://www.linkedin.com/in/abdelrhman-a-ezzat/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors" aria-label="LinkedIn"><i className="fab fa-linkedin text-2xl"></i></a>
-                <a href="https://github.com/Abdelrhman941" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors" aria-label="GitHub"><i className="fab fa-github text-2xl"></i></a>
-            </div>
         </div>
       </div>
     </>

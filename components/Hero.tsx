@@ -2,6 +2,7 @@ import React from 'react';
 import AnimatedSection from './ui/AnimatedSection';
 import TextType from './ui/TextType';
 import CircularText from './ui/CircularText';
+import profileImg from '../image.jpg';
 
 const WordTicker: React.FC<{ content: string; className?: string }> = ({ content, className }) => (
     <div className={`word-ticker-content whitespace-nowrap font-semibold opacity-8 ${className}`}>
@@ -73,8 +74,8 @@ const Hero: React.FC = () => {
 
                         {/* Profile Image */}
                         <div className="relative z-10 w-52 h-52 md:w-64 md:h-64 lg:w-80 lg:h-80 rounded-full overflow-hidden border-4 border-cyan-400/30 shadow-lg shadow-cyan-400/20 hover:shadow-cyan-400/40 transition-all duration-300">
-                            <img 
-                                src="/image.jpg"
+                            <img
+                                src={profileImg}
                                 alt="Abdelrhman Ezzat"
                                 className="w-full h-full object-cover"
                             />
