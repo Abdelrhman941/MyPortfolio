@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import AnimatedSection from './ui/AnimatedSection';
 import TextType from './ui/TextType';
 import CircularText from './ui/CircularText';
+import { Blurhash } from 'react-blurhash';
 import profileImg from '../image.jpg';
 
 const WordTicker: React.FC<{ content: string; className?: string }> = ({ content, className }) => (
@@ -11,6 +12,7 @@ const WordTicker: React.FC<{ content: string; className?: string }> = ({ content
 );
 
 const Hero: React.FC = () => {
+    const [imageLoaded, setImageLoaded] = useState(false);
     const tickerContent = "Machine Learning • Deep Learning • Neural Networks • Artificial Intelligence • Data Mining • Predictive Analytics • Statistical Modeling • Algorithm Design • Feature Engineering • Model Optimization • Natural Language Processing • Computer Vision • Big Data • Data Visualization • Python • TensorFlow • PyTorch • Scikit-learn • Pandas • NumPy • Jupyter • Apache Spark • Classification • Regression • Clustering • Dimensionality Reduction • Time Series Analysis • Reinforcement Learning • Ensemble Methods • Cross Validation • Hyperparameter Tuning • Data Engineering • ETL Pipelines • SQL • NoSQL • Cloud Computing • AWS • Docker • Git • API Development • Web Scraping • Data Warehousing • Business Intelligence • ";
   return (
     <section id="cover" className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -74,10 +76,23 @@ const Hero: React.FC = () => {
 
                         {/* Profile Image */}
                         <div className="relative z-10 w-52 h-52 md:w-64 md:h-64 lg:w-80 lg:h-80 rounded-full overflow-hidden border-4 border-cyan-400/30 shadow-lg shadow-cyan-400/20 hover:shadow-cyan-400/40 transition-all duration-300">
+                            {!imageLoaded && (
+                                <div className="absolute inset-0">
+                                    <Blurhash
+                                        hash="L6B{t5?I4oMx~q-;%NxY%MozEMRj"
+                                        width="100%"
+                                        height="100%"
+                                        resolutionX={32}
+                                        resolutionY={32}
+                                        punch={1}
+                                    />
+                                </div>
+                            )}
                             <img
                                 src={profileImg}
                                 alt="Abdelrhman Ezzat"
-                                className="w-full h-full object-cover"
+                                className={`w-full h-full object-cover transition-opacity duration-700 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
+                                onLoad={() => setImageLoaded(true)}
                             />
                         </div>
                     </div>
