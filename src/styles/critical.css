@@ -1,0 +1,398 @@
+/* =====================================================
+   CRITICAL PATH CSS - Inlined for instant render
+   Ultra-Performance Optimizations
+   ===================================================== */
+
+/* ========== PERFORMANCE FUNDAMENTALS ========== */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  border: 0 solid #e5e7eb;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  tab-size: 4;
+  font-feature-settings: normal;
+  font-variation-settings: normal;
+  line-height: 1.5;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  line-height: inherit;
+  background-color: #a89090;
+  color: #f2f2f2;
+  overflow-x: hidden;
+  font-family: 'Inter', sans-serif;
+}
+
+/* ========== GPU ACCELERATION ========== */
+.gpu-accelerate {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* ========== GRADIENT TEXT ========== */
+.gradient-text {
+  background: linear-gradient(135deg, #00cfa7 0%, #3ab0ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+
+/* ========== 60FPS ANIMATIONS - ONLY TRANSFORM & OPACITY ========== */
+
+/* News ticker animation - smooth scrolling */
+@keyframes news-ticker {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.news-ticker {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 100%;
+}
+
+.news-ticker-content {
+  display: inline-block;
+  padding-left: 100%;
+  animation: news-ticker 30s linear infinite;
+  will-change: transform;
+}
+
+.news-ticker-reverse .news-ticker-content {
+  animation-direction: reverse;
+  animation-duration: 35s;
+}
+
+/* Word ticker animation (legacy - keeping for compatibility) */
+@keyframes ticker {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-ticker .word-ticker-content {
+  animation: ticker 60s linear infinite;
+  will-change: transform;
+}
+
+/* Particle animation */
+@keyframes particle {
+  0% {
+    transform: translate3d(0, 100vh, 0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(50px, -100px, 0);
+    opacity: 0;
+  }
+}
+
+.particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: #00cfa7;
+  border-radius: 50%;
+  animation: particle 15s linear infinite;
+  will-change: transform;
+  pointer-events: none;
+}
+
+/* Cursor blink animation */
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Shimmer loading animation */
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Skill scroller animation */
+@keyframes scroll {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+/* ========== SKILL SCROLLER ========== */
+.skill-scroller {
+  overflow: hidden;
+  -webkit-mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+  mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+}
+
+.skill-scroller-inner {
+  display: flex;
+  gap: 1rem;
+  width: max-content;
+  animation: scroll 40s linear infinite;
+  will-change: transform;
+}
+
+.skill-scroller[data-direction='right'] .skill-scroller-inner {
+  animation-direction: reverse;
+}
+
+.skill-scroller:hover .skill-scroller-inner {
+  animation-play-state: paused;
+}
+
+/* ========== TEXT TYPE COMPONENT ========== */
+.text-type {
+  display: inline-block;
+  white-space: pre-wrap;
+  min-height: 10em;
+}
+
+@media (max-width: 768px) {
+  .text-type {
+    min-height: 12em;
+  }
+}
+
+.text-type__cursor {
+  margin-left: 0.1em;
+  display: inline-block;
+  opacity: 1;
+  font-weight: 300;
+  animation: blink 1s step-end infinite;
+}
+
+.text-type__cursor--hidden {
+  display: none;
+}
+
+/* ========== CIRCULAR TEXT ========== */
+.circular-text {
+  margin: 0 auto;
+  border-radius: 50%;
+  width: 200px;
+  position: relative;
+  height: 200px;
+  font-weight: 900;
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+  transform-origin: 50% 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.circular-text span {
+  position: absolute;
+  display: inline-block;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  font-size: 14px;
+  transition: all 0.5s cubic-bezier(0, 0, 0, 1);
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+/* ========== PROFILE IMAGE WITH GRADIENT BORDER ========== */
+
+/* Animated gradient border effect */
+@keyframes rotate-border {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.profile-image-wrapper {
+  position: relative;
+  padding: 6px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.profile-image-wrapper::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    from 0deg,
+    #222222,
+    #FFCF71,
+    #FF9D00,
+    #B6771D,
+    #7B542F,
+    #222222
+  );
+  animation: rotate-border 4s linear infinite;
+  z-index: -1;
+}
+
+.profile-image-wrapper::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    #222222,
+    #FFCF71,
+    #FF9D00,
+    #B6771D,
+    #7B542F,
+    #222222
+  );
+  animation: rotate-border 4s linear infinite;
+  filter: blur(20px);
+  opacity: 0.6;
+  z-index: -2;
+}
+
+/* ========== SMOOTH HOVER EFFECTS (60fps) ========== */
+.hover-lift {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-lift:hover {
+  transform: translate3d(0, -4px, 0);
+}
+
+/* ========== LOADING SKELETON ========== */
+.skeleton {
+  background: linear-gradient(90deg, #1a1d24 25%, #22252e 50%, #1a1d24 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 4px;
+}
+
+/* ========== INTERSECTION OBSERVER FADE-IN ========== */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity, transform;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========== LAYOUT OPTIMIZATION ========== */
+
+/* Prevent layout shift */
+img,
+video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Contain layout for isolated components */
+.contained {
+  contain: layout style paint;
+}
+
+/* Content visibility for off-screen optimization */
+.auto-visibility {
+  content-visibility: auto;
+}
+
+/* ========== ROOT ELEMENT ========== */
+#root {
+  min-height: 100vh;
+}
+
+/* ========== ACCESSIBILITY ========== */
+
+/* Respect user preferences for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  .particle,
+  .animate-ticker .word-ticker-content,
+  .skill-scroller-inner {
+    animation: none;
+  }
+}
+
+/* ========== UTILITY CLASSES ========== */
+
+/* Smooth scroll behavior */
+.smooth-scroll {
+  scroll-behavior: smooth;
+}
+
+/* Screen reader only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

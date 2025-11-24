@@ -1,6 +1,5 @@
 import React from 'react';
 import AnimatedSection from './ui/AnimatedSection';
-import PageWrapper from './ui/PageWrapper';
 
 const InfoItem: React.FC<{ icon: string; title: string; value: string; color: string; }> = ({ icon, title, value, color }) => (
     <div className="flex items-center space-x-3 text-left">
@@ -31,11 +30,11 @@ const About: React.FC = () => {
         <AnimatedSection delay={200}>
             <div className="bg-[#131519] border border-gray-800 rounded-xl shadow-2xl p-6 md:p-8 lg:p-12">
                 <div className="space-y-8">
-                    
+
                     <div className="prose prose-invert max-w-none text-gray-300 prose-p:leading-relaxed prose-strong:text-white">
                         <p>I'm Abdelrhman Ezzat, a passionate Data Scientist and AI Engineer currently pursuing my Bachelor's degree in Artificial Intelligence and Data Science at Menoufia University, Egypt. My academic journey has equipped me with both theoretical foundations and practical expertise in cutting-edge AI technologies.</p>
                     </div>
-                    
+
                     <div>
                         <h3 className="text-xl md:text-2xl font-semibold mb-4 text-teal-400"><i className="fas fa-brain mr-3"></i>My Expertise</h3>
                         <p className="text-gray-300 leading-relaxed mb-4">
@@ -51,7 +50,7 @@ const About: React.FC = () => {
                     </div>
 
                 </div>
-                
+
                 <div className="mt-12 pt-8 border-t border-gray-700/50">
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-sm">
                         <InfoItem icon="fas fa-graduation-cap" title="Education" value="BS in AI & Data Science" color="text-teal-400" />

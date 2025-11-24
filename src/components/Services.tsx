@@ -82,7 +82,7 @@ const colorClasses = {
 const ServiceCard: React.FC<{ service: typeof SERVICES_DATA[0] }> = ({ service }) => {
   const colors = colorClasses[service.color as keyof typeof colorClasses];
   return (
-    <div className={`h-full flex flex-col bg-[#131519] border border-gray-800 rounded-xl p-6 md:p-8 transition-all duration-300 transform hover:-translate-y-2 ${colors.border} ${colors.shadow}`}>
+    <div className={`h-full flex flex-col bg-[#131519] border border-gray-800 rounded-xl p-6 md:p-8 transition-all duration-300 ${colors.border} ${colors.shadow}`}>
       <div className="text-center mb-6">
         <i className={`${service.icon} text-4xl ${colors.icon} mb-4`}></i>
         <h3 className="text-xl font-semibold text-white">{service.title}</h3>

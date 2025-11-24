@@ -1,248 +1,331 @@
 <!DOCTYPE html>
-<html lang="en" class="smooth-scroll">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Abdelrhman Ezzat - Senior Frontend Developer & Performance Engineer">
-    <title>Portfolio - Abdelrhman Ezzat</title>
-    
-    <!-- Preconnect to critical origins -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <meta name="description"
+        content="Abdelrhman Ezzat - Data Scientist & AI Engineer specializing in Machine Learning, Deep Learning, and NLP">
+    <meta name="theme-color" content="#0f1115">
+    <title>Abdelrhman Ezzat - Data Scientist & AI Engineer</title>
+
+    <!-- Preconnect to critical origins for faster font loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-    
-    <!-- Preload critical assets -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" as="style">
-    <link rel="preload" as="image" href="https://i.postimg.cc/BQrWmm8n/1.png" type="image/png">
-    
+
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="https://i.postimg.cc/BQrWmm8n/1.png">
-    
-    <!-- Critical CSS inline for instant render (above-the-fold only) -->
+
+    <!-- Preload critical assets -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        as="style">
+    <link rel="preload" as="image" href="https://i.postimg.cc/BQrWmm8n/1.png" type="image/png">
+
+    <!-- Critical CSS - Inline for instant render (minified) -->
     <style>
-        /* Critical Path CSS - Inlined for instant render */
-        *,::before,::after{box-sizing:border-box;border:0 solid #e5e7eb}
-        ::before,::after{--tw-content:''}
-        html{-webkit-text-size-adjust:100%;tab-size:4;font-feature-settings:normal;font-variation-settings:normal;line-height:1.5;font-family:Inter,ui-sans-serif,system-ui,sans-serif}
-        body{margin:0;line-height:inherit;background-color:#0f1115;color:#f2f2f2;overflow-x:hidden;font-family:'Inter',sans-serif}
-        
-        /* Performance optimizations */
-        *{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
-        .gpu-accelerate{transform:translateZ(0);backface-visibility:hidden;perspective:1000px}
-        
-        /* Smooth scroll */
-        html{scroll-behavior:smooth}
-        @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-        
-        /* Hero section critical styles */
-        #root{min-height:100vh}
-        .gradient-text{background:linear-gradient(135deg,#00cfa7 0%,#3ab0ff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-fill-color:transparent}
-        
-        /* Prevent layout shift */
-        img,video{max-width:100%;height:auto;display:block}
-        
-        /* Loading skeleton */
-        .skeleton{background:linear-gradient(90deg,#1a1d24 25%,#22252e 50%,#1a1d24 75%);background-size:200% 100%;animation:shimmer 1.5s infinite}
-        @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
-        
-        /* Intersection Observer fade-in */
-        .fade-in{opacity:0;transform:translateY(30px);transition:opacity .6s cubic-bezier(.4,0,.2,1),transform .6s cubic-bezier(.4,0,.2,1);will-change:opacity,transform}
-        .fade-in.visible{opacity:1;transform:translateY(0)}
-    </style>
-    
-    <!-- Load fonts with swap -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Defer non-critical CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all';this.onload=null" crossorigin="anonymous" />
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous"></noscript>
-    
-    <!-- Tailwind CDN (defer for performance) -->
-    <script src="https://cdn.tailwindcss.com" defer></script>
-    
-    <!-- GSAP deferred -->
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" as="script">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-    <style>
-        /* ===== CRITICAL CSS - Inline for instant render ===== */
-        
-        /* Performance fundamentals */
         * {
             -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
+            -moz-osx-font-smoothing: grayscale
         }
-        
+
+        *,
+        ::before,
+        ::after {
+            box-sizing: border-box;
+            border: 0 solid #e5e7eb
+        }
+
         html {
             scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+            tab-size: 4;
+            line-height: 1.5;
+            font-family: Inter, ui-sans-serif, system-ui, sans-serif
         }
-        
+
         body {
-            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
             background-color: #0f1115;
             color: #f2f2f2;
             overflow-x: hidden;
-            margin: 0;
-            padding: 0;
+            font-family: 'Inter', sans-serif
         }
-        
-        /* GPU acceleration for smooth animations */
+
         .gpu-accelerate {
             transform: translateZ(0);
             backface-visibility: hidden;
-            perspective: 1000px;
+            perspective: 1000px
         }
-        
+
         .gradient-text {
             background: linear-gradient(135deg, #00cfa7 0%, #3ab0ff 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        /* 60fps GPU-accelerated animations - only transform & opacity */
-        @keyframes ticker {
-            0% { transform: translate3d(0, 0, 0); }
-            100% { transform: translate3d(-50%, 0, 0); }
-        }
-        
-        .animate-ticker .word-ticker-content {
-            animation: ticker 60s linear infinite;
-            will-change: transform;
+            background-clip: text
         }
 
-        @keyframes particle {
-            0% { transform: translate3d(0, 100vh, 0); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translate3d(50px, -100px, 0); opacity: 0; }
+        @keyframes ticker {
+            0% {
+                transform: translate3d(0, 0, 0)
+            }
+
+            100% {
+                transform: translate3d(-50%, 0, 0)
+            }
         }
-        
-        .particle {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: #00cfa7;
-            border-radius: 50%;
-            animation: particle 15s linear infinite;
-            will-change: transform;
-            pointer-events: none;
+
+        /* News ticker animation - smooth scrolling */
+        @keyframes news-ticker {
+            0% {
+                transform: translate3d(0, 0, 0)
+            }
+
+            100% {
+                transform: translate3d(-50%, 0, 0)
+            }
         }
-        
-        /* Optimized Skills Scroller with GPU acceleration */
+
+        .news-ticker {
+            display: inline-block;
+            white-space: nowrap;
+            overflow: hidden;
+            width: 100%
+        }
+
+        .news-ticker-content {
+            display: inline-block;
+            padding-left: 100%;
+            animation: news-ticker 30s linear infinite;
+            will-change: transform
+        }
+
+        .news-ticker-reverse .news-ticker-content {
+            animation-direction: reverse;
+            animation-duration: 35s
+        }
+
+        .animate-ticker .word-ticker-content {
+            animation: ticker 60s linear infinite;
+            will-change: transform
+        }
+
+        @keyframes scroll {
+            from {
+                transform: translate3d(0, 0, 0)
+            }
+
+            to {
+                transform: translate3d(-50%, 0, 0)
+            }
+        }
+
         .skill-scroller {
             overflow: hidden;
             -webkit-mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
-            mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+            mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent)
         }
-        
+
         .skill-scroller-inner {
             display: flex;
             gap: 1rem;
             width: max-content;
             animation: scroll 40s linear infinite;
-            will-change: transform;
-        }
-        
-        .skill-scroller[data-direction="right"] .skill-scroller-inner {
-            animation-direction: reverse;
-        }
-        
-        .skill-scroller:hover .skill-scroller-inner {
-            animation-play-state: paused;
-        }
-        
-        @keyframes scroll {
-            from { transform: translate3d(0, 0, 0); }
-            to { transform: translate3d(-50%, 0, 0); }
+            will-change: transform
         }
 
-        /* Accessibility - respect user preferences */
-        @media (prefers-reduced-motion: reduce) {
-            *,
-            *::before,
-            *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-            
-            .particle,
-            .animate-ticker .word-ticker-content,
-            .skill-scroller-inner {
-                animation: none;
-            }
+        .skill-scroller[data-direction='right'] .skill-scroller-inner {
+            animation-direction: reverse
         }
-        
-        /* TextType component - prevent layout shift */
+
+        .skill-scroller:hover .skill-scroller-inner {
+            animation-play-state: paused
+        }
+
         .text-type {
             display: inline-block;
             white-space: pre-wrap;
-            min-height: 10em;
+            min-height: 10em
         }
-        
-        @media (max-width: 768px) {
+
+        @media(max-width:768px) {
             .text-type {
-                min-height: 12em;
+                min-height: 12em
             }
         }
-        
+
         .text-type__cursor {
-            margin-left: 0.1em;
+            margin-left: .1em;
             display: inline-block;
             opacity: 1;
             font-weight: 300;
-            animation: blink 1s step-end infinite;
+            animation: blink 1s step-end infinite
         }
-        
+
         @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
+
+            0%,
+            100% {
+                opacity: 1
+            }
+
+            50% {
+                opacity: 0
+            }
         }
-        
+
         .text-type__cursor--hidden {
-            display: none;
+            display: none
         }
-        
-        /* Smooth hover effects (60fps) */
-        .hover-lift {
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+        .circular-text {
+            margin: 0 auto;
+            border-radius: 50%;
+            width: 200px;
+            position: relative;
+            height: 200px;
+            font-weight: 900;
+            color: #fff;
+            text-align: center;
+            cursor: pointer;
+            transform-origin: 50% 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center
         }
-        
-        .hover-lift:hover {
-            transform: translate3d(0, -4px, 0);
+
+        .circular-text span {
+            position: absolute;
+            display: inline-block;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            font-size: 14px;
+            transition: all .5s cubic-bezier(0, 0, 0, 1);
+            font-weight: 700;
+            letter-spacing: 2px
         }
-        
-        /* Loading skeleton for perceived performance */
+
+        /* Profile image with gradient border */
+        @keyframes rotate-border {
+            0% {
+                transform: rotate(0deg)
+            }
+
+            100% {
+                transform: rotate(360deg)
+            }
+        }
+
+        .profile-image-wrapper {
+            position: relative;
+            padding: 6px;
+            border-radius: 50%;
+            overflow: hidden
+        }
+
+        .profile-image-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, #222222, #FFCF71, #FF9D00, #B6771D, #7B542F, #222222);
+            animation: rotate-border 4s linear infinite;
+            z-index: -1
+        }
+
+        .profile-image-wrapper::after {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            right: -4px;
+            bottom: -4px;
+            border-radius: 50%;
+            background: conic-gradient(from 0deg, #222222, #FFCF71, #FF9D00, #B6771D, #7B542F, #222222);
+            animation: rotate-border 4s linear infinite;
+            filter: blur(20px);
+            opacity: 0.6;
+            z-index: -2
+        }
+
         .skeleton {
             background: linear-gradient(90deg, #1a1d24 25%, #22252e 50%, #1a1d24 75%);
             background-size: 200% 100%;
             animation: shimmer 1.5s infinite;
-            border-radius: 4px;
+            border-radius: 4px
         }
-        
+
         @keyframes shimmer {
-            0% { background-position: 200% 0; }
-            100% { background-position: -200% 0; }
+            0% {
+                background-position: 200% 0
+            }
+
+            100% {
+                background-position: -200% 0
+            }
         }
-        
-        /* Contain layout for isolated components */
+
+        img,
+        video {
+            max-width: 100%;
+            height: auto;
+            display: block
+        }
+
         .contained {
-            contain: layout style paint;
+            contain: layout style paint
+        }
+
+        #root {
+            min-height: 100vh
+        }
+
+        @media(prefers-reduced-motion:reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: .01ms !important
+            }
+
+            html {
+                scroll-behavior: auto
+            }
+
+            .particle,
+            .animate-ticker .word-ticker-content,
+            .skill-scroller-inner {
+                animation: none
+            }
         }
     </style>
-<script type="importmap">
-{
-  "imports": {
-    "react/": "https://aistudiocdn.com/react@^19.2.0/",
-    "react": "https://aistudiocdn.com/react@^19.2.0",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/"
-  }
-}
-</script>
-<link rel="stylesheet" href="/index.css">
+    
+    <!-- Load fonts with optimal display strategy -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    
+    <!-- Defer Font Awesome to avoid blocking -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style"
+        onload="this.onload=null;this.rel='stylesheet'" crossorigin="anonymous">
+    <noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+            crossorigin="anonymous">
+    </noscript>
+    
+    <!-- Tailwind CSS - loaded async for non-critical styles -->
+    <script src="https://cdn.tailwindcss.com" defer></script>
+    
+    <!-- GSAP - preload and defer -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" as="script">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
 </head>
 <body>
     <div id="root"></div>
-<script type="module" src="/index.tsx"></script>
+    <script type="module" src="/index.tsx"></script>
 </body>
 </html>

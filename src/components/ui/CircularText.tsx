@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { motion } from 'motion/react';
-import './CircularText.css';
 
 interface CircularTextProps {
   text: string;
@@ -45,6 +44,21 @@ const CircularText = ({ text, spinDuration = 20, onHover = 'speedUp', className 
       }}
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
+      style={{
+        margin: '0 auto',
+        borderRadius: '50%',
+        width: '200px',
+        position: 'relative',
+        height: '200px',
+        fontWeight: 900,
+        color: '#fff',
+        textAlign: 'center',
+        cursor: 'pointer',
+        transformOrigin: '50% 50%',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
+      }}
     >
       {letters.map((letter, i) => {
         const rotationDeg = (360 / letters.length) * i;
@@ -54,7 +68,23 @@ const CircularText = ({ text, spinDuration = 20, onHover = 'speedUp', className 
         const transform = `rotateZ(${rotationDeg}deg) translate3d(${x}px, ${y}px, 0)`;
 
         return (
-          <span key={i} style={{ transform, WebkitTransform: transform }}>
+          <span 
+            key={i} 
+            style={{ 
+              transform, 
+              WebkitTransform: transform,
+              position: 'absolute',
+              display: 'inline-block',
+              left: 0,
+              right: 0,
+              top: 0,
+              bottom: 0,
+              fontSize: '14px',
+              transition: 'all 0.5s cubic-bezier(0, 0, 0, 1)',
+              fontWeight: 700,
+              letterSpacing: '2px'
+            }}
+          >
             {letter}
           </span>
         );
