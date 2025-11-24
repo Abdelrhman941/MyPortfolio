@@ -12,15 +12,7 @@ export default defineConfig(({ mode }) => {
       host: '0.0.0.0',
     },
     plugins: [
-      react({
-        // Use SWC for faster builds
-        babel: {
-          plugins: [
-            // Remove console logs in production
-            mode === 'production' && ['transform-remove-console', { exclude: ['error', 'warn'] }],
-          ].filter(Boolean),
-        },
-      }),
+      react(),
     ],
     define: {
       'process.env.API_KEY': JSON.stringify(env.GEMINI_API_KEY),
@@ -56,8 +48,6 @@ export default defineConfig(({ mode }) => {
           manualChunks: {
             // React core - rarely changes
             'react-core': ['react', 'react-dom'],
-            // Heavy 3D libraries - separate chunk
-            'three-vendor': ['three', '@react-three/fiber', '@react-three/drei'],
             // Animation libraries
             'animation': ['motion', 'react-blurhash'],
           },
@@ -98,7 +88,6 @@ export default defineConfig(({ mode }) => {
     // Optimize dependencies pre-bundling
     optimizeDeps: {
       include: ['react', 'react-dom', 'motion'],
-      exclude: ['three'], // Three.js is already optimized
       esbuildOptions: {
         // Target modern browsers
         target: 'esnext',
