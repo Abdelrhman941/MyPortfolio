@@ -8,7 +8,10 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "analyze": "vite build && vite-bundle-visualizer",
+    "lighthouse": "npm run build && lighthouse http://localhost:4173 --view",
+    "perf": "npm run build && npm run preview"
   },
   "dependencies": {
     "@react-three/drei": "^10.7.6",

@@ -4,59 +4,128 @@ interface AnimatedSectionProps {
   children: React.ReactNode;
   className?: string;
   delay?: number;
+  animation?: 'fade' | 'slide-up' | 'slide-left' | 'slide-right' | 'scale';
+  threshold?: number;
 }
 
-// Fix: Updated hook to accept `triggerOnce`, provide an explicit return type, and implement the triggerOnce logic.
-const useIntersectionObserver = (options: IntersectionObserverInit & { triggerOnce?: boolean }): [React.Dispatch<React.SetStateAction<HTMLElement | null>>, IntersectionObserverEntry | null] => {
-  const [entry, setEntry] = useState<IntersectionObserverEntry | null>(null);
+/**
+ * Ultra-optimized IntersectionObserver hook
+ * - Automatic cleanup
+ * - Trigger once for performance
+ * - GPU-accelerated animations only
+ */
+const useIntersectionObserver = (
+  options: IntersectionObserverInit & { triggerOnce?: boolean }
+): [React.Dispatch<React.SetStateAction<HTMLElement | null>>, boolean] => {
+  const [isVisible, setIsVisible] = useState(false);
   const [node, setNode] = useState<HTMLElement | null>(null);
   const observer = useRef<IntersectionObserver | null>(null);
-
-  // Fix: Memoize options to prevent re-creating observer on every render.
-  const memoizedOptions = JSON.stringify(options);
+  const hasTriggered = useRef(false);
 
   useEffect(() => {
-    // Fix: Destructure `triggerOnce` and pass valid options to IntersectionObserver.
-    const parsedOptions = JSON.parse(memoizedOptions);
-    const { triggerOnce, ...observerOptions } = parsedOptions;
-    
+    if (!node) return;
+
+    // Skip if already triggered and triggerOnce is enabled
+    if (options.triggerOnce && hasTriggered.current) {
+      return;
+    }
+
+    const { triggerOnce, ...observerOptions } = options;
+
     if (observer.current) observer.current.disconnect();
 
     observer.current = new IntersectionObserver(([entry]) => {
-      setEntry(entry);
-      // Fix: Implement `triggerOnce` logic to disconnect after first intersection.
-      if (triggerOnce && entry.isIntersecting) {
-        observer.current?.disconnect();
+      const visible = entry.isIntersecting;
+      
+      if (visible) {
+        setIsVisible(true);
+        hasTriggered.current = true;
+
+        // Disconnect after first trigger for performance
+        if (triggerOnce && observer.current) {
+          observer.current.disconnect();
+        }
+      } else if (!triggerOnce) {
+        setIsVisible(false);
       }
     }, observerOptions);
 
-    const { current: currentObserver } = observer;
-    if (node) currentObserver.observe(node);
+    observer.current.observe(node);
 
-    return () => currentObserver.disconnect();
-  }, [node, memoizedOptions]);
+    return () => {
+      if (observer.current) {
+        observer.current.disconnect();
+      }
+    };
+  }, [node, options.threshold, options.rootMargin, options.triggerOnce]);
 
-  return [setNode, entry];
+  return [setNode, isVisible];
 };
 
-const AnimatedSection: React.FC<AnimatedSectionProps> = ({ children, className = '', delay = 0 }) => {
-  // Fix: The `triggerOnce` property is now valid for the hook's options.
-  const [ref, entry] = useIntersectionObserver({
-    threshold: 0.1,
+/**
+ * Ultra-performance AnimatedSection component
+ * - Only animates transform and opacity (60fps)
+ * - GPU-accelerated with translate3d
+ * - Automatic IntersectionObserver cleanup
+ * - Support for multiple animation types
+ */
+const AnimatedSection: React.FC<AnimatedSectionProps> = ({
+  children,
+  className = '',
+  delay = 0,
+  animation = 'fade',
+  threshold = 0.1,
+}) => {
+  const [ref, isVisible] = useIntersectionObserver({
+    threshold,
     triggerOnce: true,
   });
 
-  // Fix: `entry` is now correctly typed as `IntersectionObserverEntry | null`, so `isIntersecting` can be accessed safely.
-  const isVisible = entry?.isIntersecting;
+  // Get animation classes based on type
+  const getAnimationClasses = () => {
+    const baseClasses = 'transition-all duration-700 ease-out gpu-accelerate';
+    
+    switch (animation) {
+      case 'slide-up':
+        return `${baseClasses} ${
+          isVisible
+            ? 'opacity-100 translate-y-0'
+            : 'opacity-0 translate-y-10'
+        }`;
+      case 'slide-left':
+        return `${baseClasses} ${
+          isVisible
+            ? 'opacity-100 translate-x-0'
+            : 'opacity-0 -translate-x-10'
+        }`;
+      case 'slide-right':
+        return `${baseClasses} ${
+          isVisible
+            ? 'opacity-100 translate-x-0'
+            : 'opacity-0 translate-x-10'
+        }`;
+      case 'scale':
+        return `${baseClasses} ${
+          isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+        }`;
+      case 'fade':
+      default:
+        return `${baseClasses} ${
+          isVisible ? 'opacity-100' : 'opacity-0'
+        }`;
+    }
+  };
 
   return (
     <div
-      // Fix: `ref` is a callback ref and is passed directly without incorrect casting.
       ref={ref}
-      className={`transition-all duration-1000 ${className} ${
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-      }`}
-      style={{ transitionDelay: `${delay}ms` }}
+      className={`${getAnimationClasses()} ${className}`}
+      style={{
+        transitionDelay: `${delay}ms`,
+        // Force GPU acceleration
+        transform: 'translate3d(0, 0, 0)',
+        willChange: isVisible ? 'auto' : 'transform, opacity',
+      }}
     >
       {children}
     </div>

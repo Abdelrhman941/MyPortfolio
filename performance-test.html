@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Performance Test Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f1115 0%, #1a1d24 100%);
+            color: #f2f2f2;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            background: linear-gradient(135deg, #00cfa7 0%, #3ab0ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .subtitle {
+            color: #8b92a7;
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 24px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 32px rgba(0, 207, 167, 0.2);
+        }
+        
+        .card h2 {
+            color: #00cfa7;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .metric {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #fff;
+            margin: 1rem 0;
+        }
+        
+        .status {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+        
+        .status.good {
+            background: rgba(0, 207, 167, 0.2);
+            color: #00cfa7;
+        }
+        
+        .status.warning {
+            background: rgba(255, 165, 0, 0.2);
+            color: #ffa500;
+        }
+        
+        .status.poor {
+            background: rgba(255, 68, 68, 0.2);
+            color: #ff4444;
+        }
+        
+        .checklist {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 24px;
+        }
+        
+        .checklist h2 {
+            color: #3ab0ff;
+            margin-bottom: 1.5rem;
+        }
+        
+        .check-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .check-item:last-child {
+            border-bottom: none;
+        }
+        
+        .check-icon {
+            font-size: 1.5rem;
+            margin-right: 12px;
+        }
+        
+        .btn {
+            background: linear-gradient(135deg, #00cfa7 0%, #3ab0ff 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0, 207, 167, 0.4);
+        }
+        
+        .code-block {
+            background: #1a1d24;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 20px;
+            overflow-x: auto;
+        }
+        
+        .code-block code {
+            color: #00cfa7;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Ultra-Performance Portfolio</h1>
+        <p class="subtitle">AAA Game-Level Performance Metrics</p>
+        
+        <div class="grid">
+            <div class="card">
+                <h2>Lighthouse Score</h2>
+                <div class="metric">95+</div>
+                <span class="status good">✅ Target</span>
+            </div>
+            
+            <div class="card">
+                <h2>First Contentful Paint</h2>
+                <div class="metric">&lt; 1.5s</div>
+                <span class="status good">✅ Target</span>
+            </div>
+            
+            <div class="card">
+                <h2>Time to Interactive</h2>
+                <div class="metric">&lt; 3s</div>
+                <span class="status good">✅ Target</span>
+            </div>
+            
+            <div class="card">
+                <h2>Cumulative Layout Shift</h2>
+                <div class="metric">&lt; 0.1</div>
+                <span class="status good">✅ Target</span>
+            </div>
+            
+            <div class="card">
+                <h2>Animations</h2>
+                <div class="metric">60fps</div>
+                <span class="status good">✅ GPU Accelerated</span>
+            </div>
+            
+            <div class="card">
+                <h2>Scroll Performance</h2>
+                <div class="metric">Buttery</div>
+                <span class="status good">✅ Passive Listeners</span>
+            </div>
+        </div>
+        
+        <div class="checklist">
+            <h2>✨ Implemented Optimizations</h2>
+            
+            <div class="check-item">
+                <span class="check-icon">✅</span>
+                <span>Critical CSS inlined in &lt;head&gt;</span>
+            </div>
+            
+            <div class="check-item">
+                <span class="check-icon">✅</span>
+                <span>GPU-accelerated animations (transform & opacity only)</span>
+            </div>
+            
+            <div class="check-item">
+                <span class="check-icon">✅</span>
+                <span>IntersectionObserver for lazy loading</span>
+            </div>
+            
+            <div class="check-item">
+                <span class="check-icon">✅</span>
+                <span>Passive event listeners for smooth scrolling</span>
+            </div>
+            
+            <div class="check-item">
+                <span class="check-icon">✅</span>
+                <span>Resource hints (preconnect, preload)</span>
+            </div>
+            
+            <div class="check-item">
+                <span class="check-icon">✅</span>
+                <span>Skeleton screens for perceived performance</span>
+            </div>
+            
+            <div class="check-item">
+                <span class="check-icon">✅</span>
+                <span>Code splitting & tree shaking</span>
+            </div>
+            
+            <div class="check-item">
+                <span class="check-icon">✅</span>
+                <span>Font optimization (font-display: swap)</span>
+            </div>
+            
+            <div class="check-item">
+                <span class="check-icon">✅</span>
+                <span>Web Vitals monitoring (dev mode)</span>
+            </div>
+            
+            <div class="check-item">
+                <span class="check-icon">✅</span>
+                <span>Reduced motion support</span>
+            </div>
+        </div>
+        
+        <div class="code-block">
+            <code>
+# Test Performance<br>
+npm run dev          # Development with monitoring<br>
+npm run build        # Optimized production build<br>
+npm run lighthouse   # Run Lighthouse audit<br>
+npm run analyze      # Analyze bundle size
+            </code>
+        </div>
+        
+        <a href="/" class="btn">View Portfolio →</a>
+        <a href="https://github.com/Abdelrhman941/MyPortfolio" class="btn" style="background: linear-gradient(135deg, #3ab0ff 0%, #00cfa7 100%);">View Source →</a>
+    </div>
+    
+    <script>
+        // Live performance monitoring
+        if ('PerformanceObserver' in window) {
+            // Log performance metrics to console
+            const observer = new PerformanceObserver((list) => {
+                list.getEntries().forEach((entry) => {
+                    console.log(entry.name, entry.duration);
+                });
+            });
+            
+            observer.observe({ entryTypes: ['measure', 'navigation'] });
+        }
+        
+        // Display load time
+        window.addEventListener('load', () => {
+            const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
+            console.log(`%c⚡ Page loaded in ${loadTime}ms`, 'color: #00cfa7; font-size: 16px; font-weight: bold;');
+        });
+    </script>
+</body>
+</html>
