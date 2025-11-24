@@ -3,24 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Abdelrhman Ezzat - Senior Frontend Developer & Performance Engineer">
     <title>Portfolio - Abdelrhman Ezzat</title>
-    <link rel="icon" type="image/png" href="https://i.postimg.cc/BQrWmm8n/1.png">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    
+    <!-- Preconnect to critical origins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    
+    <!-- Preload critical assets -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" as="style">
+    <link rel="preload" as="image" href="https://i.postimg.cc/BQrWmm8n/1.png" type="image/png">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://i.postimg.cc/BQrWmm8n/1.png">
+    
+    <!-- Critical CSS inline for instant render (above-the-fold only) -->
     <style>
+        /* Critical Path CSS - Inlined for instant render */
+        *,::before,::after{box-sizing:border-box;border:0 solid #e5e7eb}
+        ::before,::after{--tw-content:''}
+        html{-webkit-text-size-adjust:100%;tab-size:4;font-feature-settings:normal;font-variation-settings:normal;line-height:1.5;font-family:Inter,ui-sans-serif,system-ui,sans-serif}
+        body{margin:0;line-height:inherit;background-color:#0f1115;color:#f2f2f2;overflow-x:hidden;font-family:'Inter',sans-serif}
+        
+        /* Performance optimizations */
+        *{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+        .gpu-accelerate{transform:translateZ(0);backface-visibility:hidden;perspective:1000px}
+        
+        /* Smooth scroll */
+        html{scroll-behavior:smooth}
+        @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+        
+        /* Hero section critical styles */
+        #root{min-height:100vh}
+        .gradient-text{background:linear-gradient(135deg,#00cfa7 0%,#3ab0ff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-fill-color:transparent}
+        
+        /* Prevent layout shift */
+        img,video{max-width:100%;height:auto;display:block}
+        
+        /* Loading skeleton */
+        .skeleton{background:linear-gradient(90deg,#1a1d24 25%,#22252e 50%,#1a1d24 75%);background-size:200% 100%;animation:shimmer 1.5s infinite}
+        @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+        
+        /* Intersection Observer fade-in */
+        .fade-in{opacity:0;transform:translateY(30px);transition:opacity .6s cubic-bezier(.4,0,.2,1),transform .6s cubic-bezier(.4,0,.2,1);will-change:opacity,transform}
+        .fade-in.visible{opacity:1;transform:translateY(0)}
+    </style>
+    
+    <!-- Load fonts with swap -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Defer non-critical CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all';this.onload=null" crossorigin="anonymous" />
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous"></noscript>
+    
+    <!-- Tailwind CDN (defer for performance) -->
+    <script src="https://cdn.tailwindcss.com" defer></script>
+    
+    <!-- GSAP deferred -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" as="script">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <style>
+        /* ===== CRITICAL CSS - Inline for instant render ===== */
+        
+        /* Performance fundamentals */
+        * {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
         html {
             scroll-behavior: smooth;
         }
+        
         body {
             font-family: 'Inter', sans-serif;
             background-color: #0f1115;
             color: #f2f2f2;
             overflow-x: hidden;
+            margin: 0;
+            padding: 0;
         }
+        
+        /* GPU acceleration for smooth animations */
+        .gpu-accelerate {
+            transform: translateZ(0);
+            backface-visibility: hidden;
+            perspective: 1000px;
+        }
+        
         .gradient-text {
             background: linear-gradient(135deg, #00cfa7 0%, #3ab0ff 100%);
             -webkit-background-clip: text;
@@ -28,21 +99,24 @@
             background-clip: text;
         }
         
-        /* Keyframe animations are best kept in a style tag when using Tailwind CDN */
+        /* 60fps GPU-accelerated animations - only transform & opacity */
         @keyframes ticker {
             0% { transform: translate3d(0, 0, 0); }
             100% { transform: translate3d(-50%, 0, 0); }
         }
+        
         .animate-ticker .word-ticker-content {
             animation: ticker 60s linear infinite;
+            will-change: transform;
         }
 
         @keyframes particle {
-            0% { transform: translateY(100vh) translateX(0); opacity: 0; }
+            0% { transform: translate3d(0, 100vh, 0); opacity: 0; }
             10% { opacity: 1; }
             90% { opacity: 1; }
-            100% { transform: translateY(-100px) translateX(50px); opacity: 0; }
+            100% { transform: translate3d(50px, -100px, 0); opacity: 0; }
         }
+        
         .particle {
             position: absolute;
             width: 2px;
@@ -51,32 +125,47 @@
             border-radius: 50%;
             animation: particle 15s linear infinite;
             will-change: transform;
+            pointer-events: none;
         }
         
-        /* Skills Scroller Animation */
+        /* Optimized Skills Scroller with GPU acceleration */
         .skill-scroller {
             overflow: hidden;
             -webkit-mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
             mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
         }
+        
         .skill-scroller-inner {
             display: flex;
-            gap: 1rem; /* Corresponds to gap-4 in Tailwind */
+            gap: 1rem;
             width: max-content;
             animation: scroll 40s linear infinite;
+            will-change: transform;
         }
+        
         .skill-scroller[data-direction="right"] .skill-scroller-inner {
             animation-direction: reverse;
         }
+        
         .skill-scroller:hover .skill-scroller-inner {
             animation-play-state: paused;
         }
+        
         @keyframes scroll {
-            from { transform: translateX(0); }
-            to { transform: translateX(-50%); }
+            from { transform: translate3d(0, 0, 0); }
+            to { transform: translate3d(-50%, 0, 0); }
         }
 
+        /* Accessibility - respect user preferences */
         @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            
             .particle,
             .animate-ticker .word-ticker-content,
             .skill-scroller-inner {
@@ -84,25 +173,61 @@
             }
         }
         
-        /* TextType component styles */
+        /* TextType component - prevent layout shift */
         .text-type {
-          display: inline-block;
-          white-space: pre-wrap;
-          min-height: 10em; /* Prevent layout shift during animation */
+            display: inline-block;
+            white-space: pre-wrap;
+            min-height: 10em;
         }
+        
         @media (max-width: 768px) {
             .text-type {
                 min-height: 12em;
             }
         }
+        
         .text-type__cursor {
-          margin-left: 0.1em;
-          display: inline-block;
-          opacity: 1;
-          font-weight: 300;
+            margin-left: 0.1em;
+            display: inline-block;
+            opacity: 1;
+            font-weight: 300;
+            animation: blink 1s step-end infinite;
         }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        
         .text-type__cursor--hidden {
-          display: none;
+            display: none;
+        }
+        
+        /* Smooth hover effects (60fps) */
+        .hover-lift {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .hover-lift:hover {
+            transform: translate3d(0, -4px, 0);
+        }
+        
+        /* Loading skeleton for perceived performance */
+        .skeleton {
+            background: linear-gradient(90deg, #1a1d24 25%, #22252e 50%, #1a1d24 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+            border-radius: 4px;
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+        
+        /* Contain layout for isolated components */
+        .contained {
+            contain: layout style paint;
         }
     </style>
 <script type="importmap">
