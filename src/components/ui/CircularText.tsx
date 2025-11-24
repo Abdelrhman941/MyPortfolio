@@ -1,5 +1,5 @@
-import { useState } from 'react';
 import { motion } from 'motion/react';
+import { useState } from 'react';
 
 interface CircularTextProps {
   text: string;
@@ -13,7 +13,7 @@ const CircularText = ({ text, spinDuration = 20, onHover = 'speedUp', className 
   const [isHovering, setIsHovering] = useState(false);
 
   let duration = spinDuration;
-  
+
   if (isHovering) {
     switch (onHover) {
       case 'speedUp':
@@ -68,10 +68,10 @@ const CircularText = ({ text, spinDuration = 20, onHover = 'speedUp', className 
         const transform = `rotateZ(${rotationDeg}deg) translate3d(${x}px, ${y}px, 0)`;
 
         return (
-          <span 
-            key={i} 
-            style={{ 
-              transform, 
+          <span
+            key={i}
+            style={{
+              transform,
               WebkitTransform: transform,
               position: 'absolute',
               display: 'inline-block',
