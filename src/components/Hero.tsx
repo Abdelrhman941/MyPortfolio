@@ -102,7 +102,7 @@ const Hero: React.FC = () => {
                                 <img
                                     src={profileImg}
                                     alt="Abdelrhman Ezzat - Data Scientist"
-                                    className={`w-full h-full object-cover transition-opacity duration-700 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
+                                      className={`w-full h-full object-contain transition-opacity duration-700 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
                                     onLoad={() => setImageLoaded(true)}
                                     loading="eager"
                                     decoding="async"
