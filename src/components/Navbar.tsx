@@ -1,4 +1,5 @@
 import cvFile from '@/resume/Abdelrhman_Ezzat_CV.pdf';
+import { AnimatePresence, motion } from 'motion/react';
 import React, { useEffect, useState } from 'react';
 
 const NAV_LINKS = [
@@ -46,7 +47,11 @@ const Navbar: React.FC = () => {
       <a
         href={href}
         onClick={() => isMobile && setIsOpen(false)}
-        className={`px-3 py-2 text-sm font-medium transition-colors duration-300 ${isActive ? 'text-white' : 'text-gray-400 hover:text-white'}`}
+        className={`px-3 py-2 text-sm font-medium transition-all duration-300 ${isActive
+          ? 'text-[#ffb700] font-semibold'
+          : 'text-gray-400 hover:text-[#ffb700]'
+          }`}
+        style={isActive ? { textShadow: '0 0 12px rgba(255, 183, 0, 0.4)' } : {}}
       >
         {children}
       </a>
@@ -67,10 +72,16 @@ const Navbar: React.FC = () => {
             </div>
 
             <div className="hidden md:flex items-center space-x-4">
-              <a href="#contact" className="px-3 py-2 text-sm font-medium text-gray-300 hover:text-white transition-colors">Contact</a>
-              <a href={cvFile} download className="px-4 py-2 text-sm font-semibold bg-white text-black rounded-full hover:bg-gray-200 transition-all duration-300 transform hover:scale-105">
+              <a href="#contact" className="px-3 py-2 text-sm font-medium text-gray-300 hover:text-[#ffb700] transition-all duration-300">Contact</a>
+              <motion.a
+                href={cvFile}
+                download
+                className="px-4 py-2 text-sm font-semibold bg-gradient-to-r from-[#ff8c00] via-[#ff3d00] to-[#ff007f] text-white rounded-full hover:shadow-[0_0_20px_rgba(255,140,0,0.4)]"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
                 Download CV
-              </a>
+              </motion.a>
             </div>
 
             <button
@@ -85,20 +96,41 @@ const Navbar: React.FC = () => {
       </nav>
 
       {/* Mobile Menu */}
-      <div
-        className={`md:hidden fixed inset-0 z-40 transition-all duration-500 ease-in-out ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}
-        onClick={() => setIsOpen(false)}
-      >
-        <div className={`absolute inset-0 bg-black/90 backdrop-blur-xl transition-all duration-500 ${isOpen ? 'opacity-100' : 'opacity-0'}`}></div>
-        <div className={`relative flex flex-col items-center justify-center h-full transition-transform duration-500 ease-out ${isOpen ? 'translate-y-0 scale-100' : '-translate-y-10 scale-95'}`} onClick={(e) => e.stopPropagation()}>
-            <div className="flex flex-col items-center justify-center space-y-6 text-lg font-medium">
-              {[...NAV_LINKS, { href: '#contact', label: 'Contact' }].map(link => <NavLink key={link.href} href={link.href} isMobile>{link.label}</NavLink>)}
-            </div>
-            <a href={cvFile} download className="mt-8 px-6 py-3 text-base font-semibold bg-white text-black rounded-full hover:bg-gray-200 transition-colors">
-              Download CV
-            </a>
-        </div>
-      </div>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="md:hidden fixed inset-0 z-40"
+            onClick={() => setIsOpen(false)}
+          >
+            <div className="absolute inset-0 bg-black/90 backdrop-blur-xl"></div>
+            <motion.div
+              initial={{ y: -20, opacity: 0, scale: 0.95 }}
+              animate={{ y: 0, opacity: 1, scale: 1 }}
+              exit={{ y: -20, opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              className="relative flex flex-col items-center justify-center h-full"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex flex-col items-center justify-center space-y-6 text-lg font-medium">
+                {[...NAV_LINKS, { href: '#contact', label: 'Contact' }].map(link => <NavLink key={link.href} href={link.href} isMobile>{link.label}</NavLink>)}
+              </div>
+              <motion.a
+                href={cvFile}
+                download
+                className="mt-8 px-6 py-3 text-base font-semibold bg-gradient-to-r from-[#ff8c00] via-[#ff3d00] to-[#ff007f] text-white rounded-full hover:shadow-[0_0_24px_rgba(255,61,0,0.5)]"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Download CV
+              </motion.a>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 };

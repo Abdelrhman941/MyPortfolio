@@ -1,4 +1,5 @@
 
+import { motion } from 'motion/react';
 import React from 'react';
 import AnimatedSection from './ui/AnimatedSection';
 
@@ -38,23 +39,30 @@ const CONTACT_INFO = [
 ];
 
 const colorClasses = {
-    teal: { icon: 'text-teal-400', bg: 'bg-teal-500', hoverBg: 'hover:bg-teal-600', border: 'hover:border-teal-400' },
-    blue: { icon: 'text-blue-400', bg: 'bg-blue-500', hoverBg: 'hover:bg-blue-600', border: 'hover:border-blue-400' },
-    purple: { icon: 'text-purple-400', bg: 'bg-purple-500', hoverBg: 'hover:bg-purple-600', border: 'hover:border-purple-400' },
-    green: { icon: 'text-green-400', bg: 'bg-green-500', hoverBg: 'hover:bg-green-600', border: 'hover:border-green-400' },
+    teal: { icon: 'text-[#ff8c00]', bg: 'bg-gradient-to-r from-[#ff8c00] to-[#ff3d00]', hoverBg: 'hover:from-[#ff7700] hover:to-[#ff2200]', border: 'hover:border-[#ff8c00]' },
+    blue: { icon: 'text-[#ff3d00]', bg: 'bg-gradient-to-r from-[#ff3d00] to-[#ff007f]', hoverBg: 'hover:from-[#ff2200] hover:to-[#ee006f]', border: 'hover:border-[#ff3d00]' },
+    purple: { icon: 'text-[#ff007f]', bg: 'bg-gradient-to-r from-[#ff007f] to-[#ffb700]', hoverBg: 'hover:from-[#ee006f] hover:to-[#ffa600]', border: 'hover:border-[#ff007f]' },
+    green: { icon: 'text-[#ffb700]', bg: 'bg-gradient-to-r from-[#ffb700] to-[#ff8c00]', hoverBg: 'hover:from-[#ffa600] hover:to-[#ff7700]', border: 'hover:border-[#ffb700]' },
 };
 
 const ContactCard: React.FC<{ info: typeof CONTACT_INFO[0] }> = ({ info }) => {
     const colors = colorClasses[info.color as keyof typeof colorClasses];
     return (
-        <div className={`flex flex-col items-center p-4 bg-[#181a1f] rounded-xl border border-transparent ${colors.border} transition-all duration-300 hover:bg-[#1f2228] text-center`}>
+        <div className={`flex flex-col items-center p-4 bg-[#0d0d0d] rounded-xl border border-gray-800/50 ${colors.border} transition-all duration-300 hover:bg-[#131313] hover:shadow-[0_0_20px_rgba(255,140,0,0.15)] text-center`}>
             <i className={`${info.icon} ${colors.icon} text-3xl mb-4`}></i>
             <div className="flex-1 min-w-0">
                 <div className="font-semibold text-white text-lg">{info.title}</div>
                 <div className="text-gray-400 text-sm mb-3 truncate w-full px-2">{info.value}</div>
-                <a href={info.href} target="_blank" rel="noopener noreferrer" className={`${colors.bg} ${colors.hoverBg} text-white font-semibold py-2 px-4 rounded-lg text-sm transition-all duration-300 inline-block transform hover:scale-110`}>
+                <motion.a
+                    href={info.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`${colors.bg} ${colors.hoverBg} text-white font-semibold py-2 px-4 rounded-lg text-sm inline-block`}
+                    whileHover={{ scale: 1.1, boxShadow: "0 4px 16px rgba(255,140,0,0.3)" }}
+                    whileTap={{ scale: 0.95 }}
+                >
                     {info.cta}
-                </a>
+                </motion.a>
             </div>
         </div>
     );
@@ -70,9 +78,9 @@ const Contact: React.FC = () => {
                 Ready to collaborate on your next AI project? I'm always excited to discuss innovative solutions.
             </p>
         </AnimatedSection>
-        
+
         <AnimatedSection delay={200}>
-            <div className="bg-[#131519] border border-gray-800 rounded-xl p-6 md:p-10">
+                  <div className="bg-[#131313] border border-gray-800/50 rounded-xl p-6 md:p-10">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     {CONTACT_INFO.map((info, index) => (
                          <ContactCard key={index} info={info} />
@@ -80,8 +88,8 @@ const Contact: React.FC = () => {
                 </div>
                 <div className="mt-10 pt-6 border-t border-gray-700/50 text-center">
                     <p className="text-gray-400">
-                        <i className="fas fa-clock text-teal-400 mr-2"></i>
-                        I typically respond within <span className="text-teal-400 font-semibold">2-6 hours</span> on business days.
+                              <i className="fas fa-clock text-[#ffb700] mr-2"></i>
+                              I typically respond within <span className="text-[#ffb700] font-semibold">2-6 hours</span> on business days.
                     </p>
                 </div>
             </div>

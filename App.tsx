@@ -29,7 +29,7 @@ const App: React.FC = () => {
   }, []);
 
   return (
-    <div className="bg-[#121419] text-gray-200">
+    <div className="bg-[#111216] text-gray-200">
       {/* Web Vitals monitoring (dev only) */}
       {process.env.NODE_ENV === 'development' && <WebVitals />}
 

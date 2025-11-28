@@ -1,8 +1,6 @@
-import profileImg from '@/src/assets/profile.jpg';
+import profileImg from '@/src/assets/profile.webp';
 import React, { useState } from 'react';
-import { Blurhash } from 'react-blurhash';
 import AnimatedSection from './ui/AnimatedSection';
-import CircularText from './ui/CircularText';
 import TextType from './ui/TextType';
 
 const WordTicker: React.FC<{ content: string; className?: string; direction?: 'left' | 'right' }> = ({
@@ -25,15 +23,15 @@ const Hero: React.FC = () => {
 
   return (
     <section id="cover" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Smooth News Ticker Background */}
+          {/* Smooth News Ticker Background - Volcano Gradient Colors (Subtle) */}
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
-            <div className="absolute top-[20%] w-full text-2xl text-teal-500/15 font-semibold">
+              <div className="absolute top-[20%] w-full text-2xl font-semibold" style={{ color: 'rgba(255, 140, 0, 0.05)' }}>
                 <WordTicker content={tickerContent.repeat(5)} direction="left" />
             </div>
-            <div className="absolute top-[50%] w-full text-xl text-blue-500/15 font-semibold">
+              <div className="absolute top-[50%] w-full text-xl font-semibold" style={{ color: 'rgba(255, 61, 0, 0.05)' }}>
                 <WordTicker content={tickerContent.repeat(5)} direction="right" />
             </div>
-            <div className="absolute top-[75%] w-full text-xl text-purple-500/15 font-semibold">
+              <div className="absolute top-[75%] w-full text-xl font-semibold" style={{ color: 'rgba(255, 0, 127, 0.05)' }}>
                 <WordTicker content={tickerContent.repeat(5)} direction="left" />
             </div>
         </div>
@@ -65,44 +63,22 @@ const Hero: React.FC = () => {
                                 typingSpeed={40}
                                 deletingSpeed={20}
                                 pauseDuration={2500}
-                                textColors={['#00cfa7', '#3ab0ff', '#f2f2f2']}
+                                  textColors={['#ff8c00', '#ff3d00', '#ffb700']}
                             />
                         </div>
                     </AnimatedSection>
                 </div>
 
-                {/* Image with Circular Text - Right Side */}
+                  {/* Profile Image - Right Side */}
                 <AnimatedSection delay={300}>
                     <div className="relative flex items-center justify-center flex-1">
-                        {/* Circular Text Border */}
-                        <div className="absolute inset-0 flex items-center justify-center">
-                            <CircularText
-                                text="DATA*SCIENTIST*AI*ENGINEER*MACHINE*LEARNING*"
-                                spinDuration={20}
-                                onHover="speedUp"
-                                className="text-cyan-400"
-                            />
-                        </div>
-
-                        {/* Profile Image with Animated Gradient Border */}
+                          {/* Profile Image with Animated Volcano Gradient Border */}
                         <div className="profile-image-wrapper">
-                            <div className="relative z-10 w-52 h-52 md:w-64 md:h-64 lg:w-80 lg:h-80 rounded-full overflow-hidden">
-                                {!imageLoaded && (
-                                    <div className="absolute inset-0">
-                                        <Blurhash
-                                            hash="L6B{t5?I4oMx~q-;%NxY%MozEMRj"
-                                            width="100%"
-                                            height="100%"
-                                            resolutionX={32}
-                                            resolutionY={32}
-                                            punch={1}
-                                        />
-                                    </div>
-                                )}
+                              <div className="relative z-10 w-52 h-52 md:w-64 md:h-64 lg:w-80 lg:h-80 rounded-full overflow-hidden">
                                 <img
                                     src={profileImg}
                                     alt="Abdelrhman Ezzat - Data Scientist"
-                                      className={`w-full h-full object-contain transition-opacity duration-700 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
+                                      className={`w-full h-full object-cover transition-opacity duration-700 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
                                     onLoad={() => setImageLoaded(true)}
                                     loading="eager"
                                     decoding="async"

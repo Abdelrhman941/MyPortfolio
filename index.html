@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
         content="Abdelrhman Ezzat - Data Scientist & AI Engineer specializing in Machine Learning, Deep Learning, and NLP">
-    <meta name="theme-color" content="#0f1115">
+    <meta name="theme-color" content="#0d0d0d">
     <title>Abdelrhman Ezzat - Data Scientist & AI Engineer</title>
 
     <!-- Preconnect to critical origins for faster font loading -->
@@ -19,9 +19,57 @@
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
         as="style">
     <link rel="preload" as="image" href="https://i.postimg.cc/BQrWmm8n/1.png" type="image/png">
+    <link rel="preload" as="image" href="/src/assets/profile.webp" type="image/webp">
 
-    <!-- Critical CSS - Inline for instant render (minified) -->
     <style>
+        /* ========================================
+           CSS Custom Properties (Design Tokens)
+           ======================================== */
+        :root {
+            /* Colors - Deep Dark Theme */
+            --bg-dark: #0d0d0d;
+            --bg-card: #131313;
+            --bg-elevated: #1a1a1a;
+
+            /* Volcano Gradient */
+            --volcano-gradient: linear-gradient(135deg, #ff8c00 0%, #ff3d00 50%, #ff007f 100%);
+            --volcano-gradient-horizontal: linear-gradient(90deg, #ff8c00, #ff3d00, #ff007f);
+            --volcano-gradient-radial: radial-gradient(circle, #ff8c00, #ff3d00, #ff007f);
+
+            /* Golden Accent */
+            --gold: #ffb700;
+            --gold-light: #ffc933;
+            --gold-dark: #cc9200;
+
+            /* Text Colors */
+            --text-primary: #f2f2f2;
+            --text-secondary: #b8b8b8;
+            --text-muted: #808080;
+
+            /* Shadows */
+            --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.4);
+            --shadow-strong: 0 6px 18px rgba(0, 0, 0, 0.55);
+            --shadow-glow-gold: 0 0 20px rgba(255, 183, 0, 0.3);
+            --shadow-glow-volcano: 0 0 24px rgba(255, 61, 0, 0.25);
+
+            /* Borders */
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-medium: rgba(255, 255, 255, 0.12);
+            --border-strong: rgba(255, 255, 255, 0.2);
+
+            /* Spacing */
+            --spacing-xs: 0.25rem;
+            --spacing-sm: 0.5rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 1.5rem;
+            --spacing-xl: 2rem;
+
+            /* Transitions */
+            --transition-fast: 0.2s ease;
+            --transition-normal: 0.3s ease;
+            --transition-slow: 0.5s ease;
+        }
+
         * {
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale
@@ -31,7 +79,7 @@
         ::before,
         ::after {
             box-sizing: border-box;
-            border: 0 solid #e5e7eb
+            border: 0 solid var(--border-subtle)
         }
 
         html {
@@ -45,8 +93,8 @@
         body {
             margin: 0;
             padding: 0;
-            background-color: #0f1115;
-            color: #f2f2f2;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
             overflow-x: hidden;
             font-family: 'Inter', sans-serif
         }
@@ -54,14 +102,16 @@
         .gpu-accelerate {
             transform: translateZ(0);
             backface-visibility: hidden;
-            perspective: 1000px
+            perspective: 1000px;
+            will-change: transform
         }
 
         .gradient-text {
-            background: linear-gradient(135deg, #00cfa7 0%, #3ab0ff 100%);
+            background: var(--volcano-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text
+            background-clip: text;
+            color: transparent
         }
 
         @keyframes ticker {
@@ -206,7 +256,7 @@
             letter-spacing: 2px
         }
 
-        /* Profile image with gradient border */
+        /* Profile image with volcano gradient border */
         @keyframes rotate-border {
             0% {
                 transform: rotate(0deg)
@@ -231,7 +281,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: conic-gradient(from 0deg, #222222, #FFCF71, #FF9D00, #B6771D, #7B542F, #222222);
+            background: conic-gradient(from 0deg, #0d0d0d, #ff8c00, #ff3d00, #ff007f, var(--gold), #0d0d0d);
             animation: rotate-border 4s linear infinite;
             z-index: -1
         }
@@ -244,28 +294,11 @@
             right: -4px;
             bottom: -4px;
             border-radius: 50%;
-            background: conic-gradient(from 0deg, #222222, #FFCF71, #FF9D00, #B6771D, #7B542F, #222222);
+            background: conic-gradient(from 0deg, #0d0d0d, #ff8c00, #ff3d00, #ff007f, var(--gold), #0d0d0d);
             animation: rotate-border 4s linear infinite;
             filter: blur(20px);
-            opacity: 0.6;
+            opacity: 0.7;
             z-index: -2
-        }
-
-        .skeleton {
-            background: linear-gradient(90deg, #1a1d24 25%, #22252e 50%, #1a1d24 75%);
-            background-size: 200% 100%;
-            animation: shimmer 1.5s infinite;
-            border-radius: 4px
-        }
-
-        @keyframes shimmer {
-            0% {
-                background-position: 200% 0
-            }
-
-            100% {
-                background-position: -200% 0
-            }
         }
 
         img,
@@ -304,11 +337,11 @@
             }
         }
     </style>
-    
+
     <!-- Load fonts with optimal display strategy -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
-    
+
     <!-- Defer Font Awesome to avoid blocking -->
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style"
         onload="this.onload=null;this.rel='stylesheet'" crossorigin="anonymous">
@@ -316,10 +349,10 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
             crossorigin="anonymous">
     </noscript>
-    
+
     <!-- Tailwind CSS - loaded async for non-critical styles -->
     <script src="https://cdn.tailwindcss.com" defer></script>
-    
+
     <!-- GSAP - preload and defer -->
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" as="script">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
