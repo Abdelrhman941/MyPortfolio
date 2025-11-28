@@ -13,7 +13,7 @@ const InfoItem: React.FC<{ icon: string; title: string; value: string; color: st
 
 const ExpertiseItem: React.FC<{ icon: string; title: string; description: string; }> = ({ icon, title, description }) => (
     <li className="flex items-start">
-        <i className={`fas ${icon} text-teal-400 mt-1 mr-4 flex-shrink-0`}></i>
+        <i className={`fas ${icon} text-[#ff8c00] mt-1 mr-4 flex-shrink-0`}></i>
         <div>
             <strong className="text-white">{title}:</strong> {description}
         </div>
@@ -28,7 +28,7 @@ const About: React.FC = () => {
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 gradient-text">About Me</h2>
         </AnimatedSection>
         <AnimatedSection delay={200}>
-            <div className="bg-[#131519] border border-gray-800 rounded-xl shadow-2xl p-6 md:p-8 lg:p-12">
+                  <div className="bg-[#131313] border border-gray-800/50 rounded-xl shadow-[0_6px_18px_rgba(0,0,0,0.55)] p-6 md:p-8 lg:p-12 hover:border-[#ff8c00]/30 transition-all duration-300">
                 <div className="space-y-8">
 
                     <div className="prose prose-invert max-w-none text-gray-300 prose-p:leading-relaxed prose-strong:text-white">
@@ -36,7 +36,7 @@ const About: React.FC = () => {
                     </div>
 
                     <div>
-                        <h3 className="text-xl md:text-2xl font-semibold mb-4 text-teal-400"><i className="fas fa-brain mr-3"></i>My Expertise</h3>
+                              <h3 className="text-xl md:text-2xl font-semibold mb-4 text-[#ffb700]"><i className="fas fa-brain mr-3"></i>My Expertise</h3>
                         <p className="text-gray-300 leading-relaxed mb-4">
                             My technical expertise spans across multiple domains of artificial intelligence:
                         </p>
@@ -53,12 +53,12 @@ const About: React.FC = () => {
 
                 <div className="mt-12 pt-8 border-t border-gray-700/50">
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-sm">
-                        <InfoItem icon="fas fa-graduation-cap" title="Education" value="BS in AI & Data Science" color="text-teal-400" />
-                        <InfoItem icon="fas fa-university" title="University" value="Menoufia University" color="text-blue-400" />
-                        <InfoItem icon="fas fa-chart-line" title="GPA" value="3.3" color="text-purple-400" />
-                        <InfoItem icon="fas fa-map-marker-alt" title="Location" value="Kafr el-Sheikh, Egypt" color="text-green-400" />
-                        <InfoItem icon="fas fa-phone" title="Phone" value="+20 101 801 8692" color="text-teal-400" />
-                        <InfoItem icon="fas fa-envelope" title="Email" value="abdalarhmanezzat@gmail.com" color="text-blue-400" />
+                              <InfoItem icon="fas fa-graduation-cap" title="Education" value="BS in AI & Data Science" color="text-[#ff8c00]" />
+                              <InfoItem icon="fas fa-university" title="University" value="Menoufia University" color="text-[#ff3d00]" />
+                              <InfoItem icon="fas fa-chart-line" title="GPA" value="3.3" color="text-[#ff007f]" />
+                              <InfoItem icon="fas fa-map-marker-alt" title="Location" value="Kafr el-Sheikh, Egypt" color="text-[#ffb700]" />
+                              <InfoItem icon="fas fa-phone" title="Phone" value="+20 101 801 8692" color="text-[#ff8c00]" />
+                              <InfoItem icon="fas fa-envelope" title="Email" value="abdalarhmanezzat@gmail.com" color="text-[#ff3d00]" />
                     </div>
                 </div>
             </div>

@@ -20,8 +20,8 @@ const SKILLS_DATA = [
 ];
 
 const SkillBadge: React.FC<{ skill: typeof SKILLS_DATA[0] }> = ({ skill }) => (
-    <div className="group flex items-center space-x-3 p-3 px-4 bg-gradient-to-br from-[#131519] to-gray-900/50 border border-gray-800 rounded-lg text-center transition-all duration-300 hover:border-teal-400 hover:scale-105 hover:shadow-2xl hover:shadow-teal-500/10">
-        <i className={`${skill.icon} text-xl text-gray-400 group-hover:text-teal-400 transition-colors duration-300`}></i>
+    <div className="group flex items-center space-x-3 p-3 px-4 bg-gradient-to-br from-[#131313] to-[#0d0d0d] border border-gray-800/50 rounded-lg text-center transition-all duration-300 hover:border-[#ffb700] hover:scale-105 hover:shadow-[0_0_20px_rgba(255,183,0,0.2)]">
+        <i className={`${skill.icon} text-xl text-gray-400 group-hover:text-[#ffb700] transition-colors duration-300`}></i>
         <span className="text-sm font-medium text-gray-300 group-hover:text-white transition-colors duration-300">{skill.name}</span>
     </div>
 );

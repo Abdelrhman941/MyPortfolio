@@ -71,18 +71,18 @@ const SERVICES_DATA = [
 ];
 
 const colorClasses = {
-    teal: { border: 'hover:border-teal-400', shadow: 'hover:shadow-[0_8px_30px_rgb(0_207_167_/_0.2)]', icon: 'text-teal-400' },
-    blue: { border: 'hover:border-blue-400', shadow: 'hover:shadow-[0_8px_30px_rgb(59_130_246_/_0.2)]', icon: 'text-blue-400' },
-    purple: { border: 'hover:border-purple-400', shadow: 'hover:shadow-[0_8px_30px_rgb(139_92_246_/_0.2)]', icon: 'text-purple-400' },
-    green: { border: 'hover:border-green-400', shadow: 'hover:shadow-[0_8px_30px_rgb(34_197_94_/_0.2)]', icon: 'text-green-400' },
-    yellow: { border: 'hover:border-yellow-400', shadow: 'hover:shadow-[0_8px_30px_rgb(234_179_8_/_0.2)]', icon: 'text-yellow-400' },
-    red: { border: 'hover:border-red-400', shadow: 'hover:shadow-[0_8px_30px_rgb(239_68_68_/_0.2)]', icon: 'text-red-400' },
+  teal: { border: 'hover:border-[#ff8c00]', shadow: 'hover:shadow-[0_8px_30px_rgba(255,140,0,0.25)]', icon: 'text-[#ff8c00]' },
+  blue: { border: 'hover:border-[#ff3d00]', shadow: 'hover:shadow-[0_8px_30px_rgba(255,61,0,0.25)]', icon: 'text-[#ff3d00]' },
+  purple: { border: 'hover:border-[#ff007f]', shadow: 'hover:shadow-[0_8px_30px_rgba(255,0,127,0.25)]', icon: 'text-[#ff007f]' },
+  green: { border: 'hover:border-[#ffb700]', shadow: 'hover:shadow-[0_8px_30px_rgba(255,183,0,0.25)]', icon: 'text-[#ffb700]' },
+  yellow: { border: 'hover:border-[#ffc933]', shadow: 'hover:shadow-[0_8px_30px_rgba(255,201,51,0.25)]', icon: 'text-[#ffc933]' },
+  red: { border: 'hover:border-[#ff6b00]', shadow: 'hover:shadow-[0_8px_30px_rgba(255,107,0,0.25)]', icon: 'text-[#ff6b00]' },
 };
 
 const ServiceCard: React.FC<{ service: typeof SERVICES_DATA[0] }> = ({ service }) => {
   const colors = colorClasses[service.color as keyof typeof colorClasses];
   return (
-    <div className={`h-full flex flex-col bg-[#131519] border border-gray-800 rounded-xl p-6 md:p-8 transition-all duration-300 ${colors.border} ${colors.shadow}`}>
+    <div className={`h-full flex flex-col bg-[#131313] border border-gray-800/50 rounded-xl p-6 md:p-8 transition-all duration-300 ${colors.border} ${colors.shadow} hover:scale-[1.02]`}>
       <div className="text-center mb-6">
         <i className={`${service.icon} text-4xl ${colors.icon} mb-4`}></i>
         <h3 className="text-xl font-semibold text-white">{service.title}</h3>
